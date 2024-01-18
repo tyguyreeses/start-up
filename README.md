@@ -16,17 +16,24 @@ I'm working on building the basics of a job comparison app. While job searching,
 ### How I'll use each technology
 **HTML**
 - idea
+
 **CSS**
 - idea
+
 **JavaScript**
 - idea 
+
 **Calling Web Services**
 - idea
+
 **Providing Web Services**
 - idea
+
 **Authentication**
 - idea
+
 **Storing Data Persistently**
 - Previous job offers entered into the system
+
 **Web Sockets**
 - Stock information of the stock options
