@@ -12,7 +12,7 @@ How to use [Markdown](https://docs.github.com/en/get-started/writing-on-github/g
 I'm working on building the basics of a job comparison website. While job searching, it can be a stressful experience to decide between two or more job offers. Comparing salary alone doesnt cut it when there are various other benefits like stock options, insurance, and retirement programs. This website will put it all in one place, clearly displaying which job performs better in separate categories to give the user the most informed choice for their career.
 
 ### Design
-![Image of my sketch of a data entry screen and for a comparison screen](startup-design.jpg)
+![Image of my sketch of a data entry screen and for a comparison screen](IMG_1127.HEIC)
 
 ### Key Features
 - Job information entry boxes with titles
