@@ -2,19 +2,24 @@
 ## BYU CS 260 Startup Project
 
 ### Notes File:
-https://github.com/tyguyreeses/start-up/blob/e61dfe6a541e9408420c8a6f8063d51671e49c7b/notes.md
+Link to [Notes File](https://github.com/tyguyreeses/start-up/blob/e61dfe6a541e9408420c8a6f8063d51671e49c7b/notes.md)
 
 ### Use Markdown
-https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax
+How to use [Markdown](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)
 
 ### Elevator Pitch
 
-I'm working on building the basics of a job comparison app. While job searching, it can be a stressful experience to decide between two or more job offers. Comparing salary alone doesnt cut it when there are various other benefits like stock options, insurance, and retirement programs. This app will put it all in one place, clearly displaying which job performs better in separate categories to give the user the most informed choice for their career.
+I'm working on building the basics of a job comparison website. While job searching, it can be a stressful experience to decide between two or more job offers. Comparing salary alone doesnt cut it when there are various other benefits like stock options, insurance, and retirement programs. This website will put it all in one place, clearly displaying which job performs better in separate categories to give the user the most informed choice for their career.
+
+### Design
+![Image of my sketch of a data entry screen and for a comparison screen](startup-design.jpg)
 
 ### Key Features
-- Job information entry boxes with titles (and explanations?)
-- 
+- Job information entry boxes with titles
+- Salary, bonus, stock options (share count calculated to cost using real time stock price), insurance (medical, dental, vision)
+- For simplicity, I will be ignoring taxes and other more complicated information to save for later
 - Saved user login attached to previously entered job information
+- Comparison screen with list of job names, take home yearly and monthly pay
 
 
 ## How I'll use each technology
@@ -45,6 +50,9 @@ I'm working on building the basics of a job comparison app. While job searching,
 
 **Database Data**
 - Displays previously entered job offer information overviews
+
+**React**
+- Application ported to the React framework
 
 **Web Sockets**
 - I'm going to use web sockets to send a retrieve the entered job information
