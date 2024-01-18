@@ -9,7 +9,7 @@ https://docs.github.com/en/get-started/writing-on-github/getting-started-with-wr
 
 ### Elevator Pitch
 
-I'm working on building the basics of a job comparison app. While job searching, it can be a stressfull experience to decide between two or more job offers. Comparing salary alone doesnt cut it when there are various other benefits like stock options, insurance, and retirement programs. This app will put it all in one place, clearly displaying which job performs better in separate categories to give the user the most informed choice for their career.
+I'm working on building the basics of a job comparison app. While job searching, it can be a stressful experience to decide between two or more job offers. Comparing salary alone doesnt cut it when there are various other benefits like stock options, insurance, and retirement programs. This app will put it all in one place, clearly displaying which job performs better in separate categories to give the user the most informed choice for their career.
 
 ### Key Features
 
