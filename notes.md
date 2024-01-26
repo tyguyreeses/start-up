@@ -10,4 +10,4 @@
 ### Domain
 - Linked to existing server with IP address
 
-I ran into a problem earlier when I linked my Domain to my server with its IP address, but I then assigned an elastic IP address to my server. That changed the overall IP address without me knowing. It was a simple fix once I realized that it was connected to the wrong address, but it was an annoying head scratcher
+I ran into a problem earlier when I linked my Domain to my server with its IP address, but I then assigned an elastic IP address to my server. That changed the overall IP address without me knowing. It was a simple fix once I realized that it was connected to the wrong address, but it was an annoying head scratcher.
