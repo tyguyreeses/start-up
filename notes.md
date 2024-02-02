@@ -14,4 +14,4 @@ I ran into a problem earlier when I linked my Domain to my server with its IP ad
 
 ### Deploying Files
 
-You have to run the `deployFiles.sh` from the directory that contains the files you are deploying.
+You have to run the `deployFiles.sh` from the directory that contains the files you are deploying every time you want to update the code on the website itself that isn't part of the `live` option in VsCode.

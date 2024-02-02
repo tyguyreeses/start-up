@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&display=swap');
+
+body {
+    font-family: 'Josefin Sans', sans-serif;
+    color: white;
+}
+
+header {
+    padding: 10pt;
+    border-radius: 10pt;
+    margin: 10pt;
+    border-top-right-radius: 75pt;
+    background-color: grey;
+
+}
+  
+h1 {
+    color:aqua;
+    border-bottom: 2pt solid white;
+}
+  
+section {
+    padding: 10pt;
+    border-radius: 10pt;
+    margin: 10pt;
+    border-top-right-radius: 75pt;
+    background-color: darkgrey;
+}
+  
+table {
+    color:black;
+    background-color: white;
+    margin: 5pt;
+    text-align: center;
+}
+
+tr {
+    padding: 6pt;
+    border: 1pt solid black
+}
+
+th {
+    padding: 6pt;
+    border: 1pt solid black
+}
+
+main {
+    animation: slide_in 2s ease-in-out 0.5s;
+}
+
+@keyframes slide_in {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
