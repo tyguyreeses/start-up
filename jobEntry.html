@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- Tell browsers not to scale the viewport automatically -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JobOfferInsight</title>
+    <link rel="icon" href="insert icon here" />
+  </head>
+  <body>
+    <!-- Use header, main, and footer elements to give semantic structure -->
+    <header>
+      <h1>JobOfferInsight</h1>
+
+      <!-- Navigation elements -->
+      <nav>
+        <!-- Menu is a semantic alternative to <ul> that represents an interaction -->
+        <menu>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="jobEntry.html">Job Entry</a></li>
+          <li><a href="compare.html">Compare Previous Entrys</a></li>
+          <li><a href="about.html">About</a></li>
+        </menu>
+      </nav>
+
+      <!-- Since we don't have the ability to style we use old style HTML to give some visual formatting -->
+      <hr />
+    </header>
+
+    <main>
+      <h1></h1>
+      <p></p>
+      <form method="get" action="compare.html">
+        <h5></h5>
+        <ul>
+          <p>Company Info</p>
+          <li>
+            <label for="title">Company Name/Job Title: </label>
+            <input type="text" id="title" />
+          </li>
+          <li>
+            <label for="salary">Offered Salary: </label>
+            <input type="text" id="salary" />
+          </li>
+          <li>
+            <label for="bonus">Bonus: </label>
+            <input type="text" id="bonus" />
+          </li>
+          <p>Stock Options</p>
+          <table>
+            <thead>
+              <tr>
+                <th>Stock Tag</th>
+                <th># of Shares</th>
+                <th>Price Per Share</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                    <input type="text" id="stock_tag" />
+                </td>
+                <td>
+                    <input type="text" id="stock_amt" />
+                </td>
+                <td>Display pps here</td>
+              </tr>
+            </tbody>
+          </table>
+          <li>
+            <button type="submit">Calculate</button>
+          </li>
+        </ul>
+      </form>
+    </main>
+
+    <footer>
+      <hr />
+      <span class="text-reset">By Tyler Reese</span>
+      <br />
+      <a href="https://github.com/tyguyreeses/start-up/blob/main/README.md">GitHub</a>
+    </footer>
+  </body>
+</html>
