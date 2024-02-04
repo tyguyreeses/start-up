@@ -33,7 +33,7 @@
       <form method="get" action="compare.html">
         <h5></h5>
         <ul>
-          <p>Company Info</p>
+          <h3>Company Info</h3>
           <li>
             <label for="title">Company Name/Job Title: </label>
             <input type="text" id="title" />
@@ -46,7 +46,15 @@
             <label for="bonus">Bonus: </label>
             <input type="text" id="bonus" />
           </li>
-          <p>Stock Options</p>
+          <li>
+            <label for="pay_period">Pay Period:  </label>
+            <select id="pay_period" name="pay_period">
+              <option>Monthly</option>
+              <option>Bi-Weekly</option>
+              <option>Weekly</option>
+            </select>
+          </li>
+          <h3>Stock Options</h3>
           <table>
             <thead>
               <tr>
