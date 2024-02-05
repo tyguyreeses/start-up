@@ -33,18 +33,28 @@
       <form method="get" action="compare.html">
         <section id="company_info">
             <h3>Company Info</h3>
-            <label for="title">Company Name/Job Title: </label>
-            <input type="text" id="title" />
-            <label for="salary">Offered Salary: </label>
-            <input type="text" id="salary" />
-            <label for="bonus">Bonus: </label>
-            <input type="text" id="bonus" />
-            <label for="pay_period">Pay Period:  </label>
-            <select id="pay_period" name="pay_period">
-                <option>Monthly</option>
-                <option>Bi-Weekly</option>
-                <option>Weekly</option>
-            </select>
+            <ul>
+                <li>
+                    <label for="title">Company Name/Job Title: </label>
+                    <input type="text" id="title" />
+                </li>
+                <li>
+                    <label for="salary">Offered Salary: </label>
+                    <input type="text" id="salary" />
+                </li>
+                <li>
+                    <label for="bonus">Bonus: </label>
+                    <input type="text" id="bonus" />
+                </li>
+                <li>
+                    <label for="pay_period">Pay Period:  </label>
+                    <select id="pay_period" name="pay_period">
+                        <option>Monthly</option>
+                        <option>Bi-Weekly</option>
+                        <option>Weekly</option>
+                    </select>
+                </li>
+            </ul>
         </section>
         <section id="stock_options">
             <h3>Stock Options</h3>
@@ -64,13 +74,19 @@
                 <td>
                     <input type="text" id="stock_amt" />
                 </td>
-                <td>realtime stock price</td>
+                <td>Websocket feature here</td>
                 </tr>
             </tbody>
             </table>
+            <li>
             <button>Calculate</button>
+            </li>
+            <li>
             <button type="reset">Reset</button>
+            </li>
+            <li>
             <button type="submit">Save Entry</button>
+            </li>
         </section>
       </form>
     </main>
