@@ -37,3 +37,13 @@ You have to run the `deployFiles.sh` from the directory that contains the files 
     `flex: 0 80px;` - "don't resize me, always make it 80px"
 
     `flex: 1;` - resize it to a fractional unit
+
+- Media Queries
+```
+    @media (orientation: portrait) {
+        body {
+            flex-direction: column;
+        }
+    }
+```
+    if in portrait mode, make the body render in columns
