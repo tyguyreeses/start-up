@@ -31,60 +31,47 @@
       <h1></h1>
       <p></p>
       <form method="get" action="compare.html">
-        <h5></h5>
-        <ul>
-          <h3>Company Info</h3>
-          <li>
+        <section id="company_info">
+            <h3>Company Info</h3>
             <label for="title">Company Name/Job Title: </label>
             <input type="text" id="title" />
-          </li>
-          <li>
             <label for="salary">Offered Salary: </label>
             <input type="text" id="salary" />
-          </li>
-          <li>
             <label for="bonus">Bonus: </label>
             <input type="text" id="bonus" />
-          </li>
-          <li>
             <label for="pay_period">Pay Period:  </label>
             <select id="pay_period" name="pay_period">
-              <option>Monthly</option>
-              <option>Bi-Weekly</option>
-              <option>Weekly</option>
+                <option>Monthly</option>
+                <option>Bi-Weekly</option>
+                <option>Weekly</option>
             </select>
-          </li>
-          <h3>Stock Options</h3>
-          <table>
+        </section>
+        <section id="stock_options">
+            <h3>Stock Options</h3>
+            <table>
             <thead>
-              <tr>
+                <tr>
                 <th>Stock Tag</th>
                 <th># of Shares</th>
                 <th>Price Per Share</th>
-              </tr>
+                </tr>
             </thead>
             <tbody>
-              <tr>
+                <tr>
                 <td>
                     <input type="text" id="stock_tag" />
                 </td>
                 <td>
                     <input type="text" id="stock_amt" />
                 </td>
-                <td>Websocket feature here</td>
-              </tr>
+                <td>realtime stock price</td>
+                </tr>
             </tbody>
-          </table>
-          <li>
+            </table>
             <button>Calculate</button>
-          </li>
-          <li>
             <button type="reset">Reset</button>
-          </li>
-          <li>
             <button type="submit">Save Entry</button>
-          </li>
-        </ul>
+        </section>
       </form>
     </main>
 
