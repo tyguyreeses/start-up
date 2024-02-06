@@ -78,3 +78,4 @@ I'm working on building the basics of a job comparison website. While job search
 - I've included a screen to display previously entered job information, stored in the specified user's account
 
 **Images**
+- I've included a mockup of a logo for my website as an image
