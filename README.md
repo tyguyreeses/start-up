@@ -57,3 +57,18 @@ I'm working on building the basics of a job comparison website. While job search
 **Web Sockets**
 - I'm going to use web sockets to send a retrieve the entered job information
 - Real time example: updating the displayed stock price in real time
+
+## HTML Deliverable
+**HTML Pages**
+- Pages represent the login screen, a job entry screen, a screen to compare all previously entered job offers, and an about page
+**Links Betweeen Pages**
+- Each page is linked in a navigation menu in the header of each page
+**3rd Party Service Call Placeholder**
+- I will call a third party service to retrieve stock price data
+**Websocket**
+- I will display real-time information on a specified stock price
+**Login Placeholder**
+- I've included a placeholder for a login screen
+**Database Data**
+- I've included a screen to display previously entered job information, stored in the specified user's account
+**Images**
