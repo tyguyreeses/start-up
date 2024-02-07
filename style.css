@@ -18,6 +18,14 @@ h1 {
   color: navy;
   border-bottom: 2pt white solid;
 }
+.menu_control {
+  text-decoration: none;
+  color: white;
+  padding: 10pt;
+  border-radius: 5pt;
+  transition: background-color 0.2s ease-in-out;
+  background-color: grey;
+}
 @media (min-width:620px) {
   .menu {
     display: flex;
@@ -25,24 +33,22 @@ h1 {
     justify-content: space-between;
     text-align: center;
   }
-
-  .menu_control {
-    text-decoration: none;
-    color: white;
-    padding: 10pt;
-    padding-bottom: 8pt;
-    border-radius: 5pt;
-    transition: background-color 0.2s ease-in-out;
-    background-color: grey;
-  }
-  
   #username_display {
     float: right;
     padding: 30px;
   }
-  
   #buttons {
     width: 50vw
+  }
+}
+@media (max-width:619px) {
+  #username_display {
+    display: none;
+  }
+  .menu {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 100px);
+    grid-gap: 20pt;
   }
 }
 
