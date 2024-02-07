@@ -84,6 +84,13 @@ button:hover {
   align-items: center;
 }
 
+.login_div {
+  padding-bottom: 7pt;
+}
+.login_box {
+  padding: 5pt;
+}
+
 #data_entry {
   display: grid;
   grid-template-columns: repeat(auto-fit, 400px);

@@ -21,21 +21,17 @@
     
     <main>
       <h1>Welcome</h1>
-      <p>Login to save and compare your entrys</p>
-      <form method="get" action="compare.html">
-        <ul>
-          <li>
-            <label for="name">Username: </label>
-            <input type="text" id="name" placeholder="Username" />
-          </li>
-          <li>
-            <label for="password">Password: </label>
-            <input type="password" id="password" placeholder="Password" />
-          </li>
-          <li>
-            <button type="submit">Login</button>
-          </li>
-        </ul>
+      <p>Login to save and compare your entries</p>
+      <form id="login_form" method="get" action="compare.html">
+        <div class="login_div">
+          <label for="name">Username: </label>
+          <input class="login_box" type="text" id="name" placeholder="Username" />
+        </div>
+        <div class="login_div">
+          <label for="password">Password: </label>
+          <input class="login_box" type="password" id="password" placeholder="Password" />
+        </div>
+        <button type="submit">Login</button>
       </form>
     </main>
 
