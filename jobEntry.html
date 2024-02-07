@@ -21,60 +21,64 @@
     
     <main>
       <form class="form" method="get" action="compare.html">
-        <section class="form_section" id="company_info">
-          <h3>Company Info</h3>
-          <div>
-            <label for="title">Company Name: </label>
-            <input type="text" id="title" />
-          </div>
-          <div>
-            <label for="salary">Offered Salary: </label>
-            <input type="text" id="salary" />
-          </div>
-          <div>
-            <label for="bonus">Signing Bonus: </label>
-            <input type="text" id="bonus" />
-          </div>
-          <div>
-            <label for="pay_period">Pay Period:  </label>
-            <select id="pay_period" name="pay_period">
-              <option>Monthly</option>
-              <option>Bi-Weekly</option>
-              <option>Weekly</option>
-            </select>
-          </div>
+        <section id="data_entry">
+          <section class="form_section" id="company_info">
+            <h1>Company Info</h1>
+            <div class="info_label">
+              <label for="title">Company Name: </label>
+              <input class="info_input" type="text" id="title" />
+            </div>
+            <div class="info_label">
+              <label for="salary">Offered Salary: </label>
+              <input class="info_input" type="text" id="salary" />
+            </div>
+            <div class="info_label">
+              <label for="bonus">Signing Bonus: </label>
+              <input class="info_input" type="text" id="bonus" />
+            </div>
+            <div class="info_label">
+              <label for="pay_period">Pay Period:  </label>
+              <select id="pay_period" name="pay_period">
+                <option>Monthly</option>
+                <option>Bi-Weekly</option>
+                <option>Weekly</option>
+              </select>
+            </div>
+          </section>
+          <section class="form_section" id="stock_options">
+            <h1>Stock Options</h1>
+            <table>
+              <thead>
+                <tr>
+                  <th>Stock Tag</th>
+                  <th># of Shares</th>
+                  <th>Share Price</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <input class="stock_input" type="text" id="stock_tag" />
+                  </td>
+                  <td>
+                    <input class="stock_input" type="text" id="stock_amt" />
+                  </td>
+                  <td>placeholder</td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
         </section>
-        <section class="form_section" id="stock_options">
-          <h3>Stock Options</h3>
-          <table>
-            <thead>
-              <tr>
-                <th>Stock Tag</th>
-                <th># of Shares</th>
-                <th>Price Per Share</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>
-                  <input type="text" id="stock_tag" />
-                </td>
-                <td>
-                  <input type="text" id="stock_amt" />
-                </td>
-                <td>realtime stock price</td>
-              </tr>
-            </tbody>
-          </table>
-          <li>
+        <section id="buttons">
+          <div>
             <button onclick="calulate()">Calculate</button>
-          </li>
-          <li>
+          </div>
+          <div>
             <button type="reset">Reset</button>
-          </li>
-          <li>
+          </div>
+          <div>
             <button type="submit">Save Entry</button>
-          </li>
+          </div>
         </section>
       </form>
     </main>
@@ -85,3 +89,4 @@
     </footer>
   </body>
 </html>
+

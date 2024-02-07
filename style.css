@@ -1,57 +1,157 @@
 @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&display=swap");
 
 body {
-font-family: "Josefin Sans", sans-serif;
-color: white;
-font-weight: bold;
+  font-family: "Josefin Sans", "Roboto", "Helvetica", sans-serif;
+  color: white;
+  font-weight: bold;
 }
 
 header {
-padding: 10pt;
-border-radius: 10pt;
-margin: 10pt;
-border-top-right-radius: 75pt;
-background-color: grey;
+  padding: 10pt;
+  border-radius: 10pt;
+  margin: 10pt;
+  border-top-right-radius: 75pt;
+  background-color: grey;
 }
 
 h1 {
-color: aqua;
-border-bottom: 2pt white solid;
+  color: navy;
+  border-bottom: 2pt white solid;
 }
 
-#username_display {
-float: right;
-padding: 30px;
+@media (min-width:620px) {
+  .menu {
+    display: flex;
+    flex-direction: rows;
+    justify-content: space-between;
+    text-align: center;
+  }
+
+  .menu_control {
+    text-decoration: none;
+    color: white;
+    padding: 10pt;
+    border-radius: 5pt;
+    transition: background-color 0.2s ease-in-out;
+  }
+  
+  #username_display {
+    float: right;
+    padding: 30px;
+  }
 }
 
-.menu {
-display: flex;
-flex-direction: rows;
-justify-content: space-between;
-text-align: center;
-}
-
-.menu_control {
-text-decoration: none;
-color: white;
-padding: 10pt;
-}
-
-a:hover {
-background-color: darkgrey;
+.menu_control:hover {
+  background-color: darkgrey;
 }
 
 main {
-padding: 10pt;
-border-radius: 10pt;
-margin: 10pt;
-background-color: darkgrey;
-height: 50vw;
+  padding: 10pt;
+  border-radius: 10pt;
+  margin: 10pt;
+  background-color: darkgrey;
+  height: minmax(50vw, 75vw);
+}
+
+button {
+  /* Basic styling */
+  font-family: "Josefin Sans", "Roboto", "Helvetica", sans-serif;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5pt;
+  cursor: pointer;
+
+  /* Background and text color */
+  background-color: grey; /* Blue background */
+  color: white; /* White text color */
+
+  /* Hover effect */
+  transition: background-color 0.2s ease-in-out;
+}
+
+button:hover {
+  background-color: navy; /* Darker blue on hover */
+}
+
+#data_entry {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 400px);
+}
+
+button {
+  margin-top: 10px;
+}
+
+.info_label {
+  padding-bottom: 7px;
+}
+
+input {
+  font-size: 12pt;
+  font-family: "Josefin Sans", "Roboto", "Helvetica", sans-serif;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+input:focus,
+input:hover {
+  box-shadow: 0 0 5px rgba(0, 0, 128, 0.5);
+}
+
+.info_input {
+  padding: 5pt;
+  max-width: 100pt;
+}
+
+select {
+  width: 100pt; /* Set the width of the dropdown */
+  padding: 50pt; /* Add padding for better appearance */
+  font-family: "Josefin Sans", "Roboto", "Helvetica", sans-serif;
+  font-weight: bold;
+  font-size: 14px; /* Set the font size */
+  border: 1px solid #ccc; /* Add a border */
+  border-radius: 5px; /* Add border radius for rounded corners */
+  background-color: #fff; /* Set background color */
+}
+
+select option {
+  font-family: "Josefin Sans", "Roboto", "Helvetica", sans-serif;
+  padding: 10px;
+  font-size: 12px;
+}
+
+/* Optional: Style the dropdown when it's focused or hovered */
+select:focus,
+select:hover {
+  border: thin solid navy;
+  box-shadow: 0 0 5px rgba(0, 0, 128, 0.5); /* Add a subtle box shadow */
+}
+
+.stock_input {
+  max-width: 50pt;
+}
+
+td, th {
+  padding-right: 15pt;
+  text-align: center;
+  position: relative;
+}
+
+td:not(:last-child)::before,
+th:not(:last-child)::before {
+  content: '';
+  position: absolute;
+  top: -2pt;
+  right: 5pt;
+  height: 120%;
+  width: 2px;
+  background-color: white;
 }
 
 footer {
-padding: 10pt;
-border-radius: 10pt;
-margin: 10pt;
-background-color: darkgrey;
+  padding: 10pt;
+  border-radius: 10pt;
+  margin: 10pt;
+  background-color: grey;
 }
