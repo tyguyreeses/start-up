@@ -8,17 +8,16 @@ body {
 
 header {
   padding: 10pt;
+  padding-bottom: 15pt;
   border-radius: 10pt;
   margin: 10pt;
   border-top-right-radius: 75pt;
   background-color: grey;
 }
-
 h1 {
   color: navy;
   border-bottom: 2pt white solid;
 }
-
 @media (min-width:620px) {
   .menu {
     display: flex;
@@ -31,17 +30,23 @@ h1 {
     text-decoration: none;
     color: white;
     padding: 10pt;
+    padding-bottom: 8pt;
     border-radius: 5pt;
     transition: background-color 0.2s ease-in-out;
+    background-color: grey;
   }
   
   #username_display {
     float: right;
     padding: 30px;
   }
+  
+  #buttons {
+    width: 50vw
+  }
 }
 
-.menu_control:hover {
+a:hover {
   background-color: darkgrey;
 }
 
@@ -52,7 +57,6 @@ main {
   background-color: darkgrey;
   height: minmax(50vw, 75vw);
 }
-
 button {
   font-family: "Josefin Sans", "Roboto", "Helvetica", sans-serif;
   padding: 10px 20px;
@@ -63,37 +67,34 @@ button {
   background-color: grey;
   color: white;
   transition: background-color 0.2s ease-in-out;
+  margin-top: 10px;
 }
-
 button:hover {
   background-color: navy;
+}
+#buttons {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  align-items: center;
 }
 
 #data_entry {
   display: grid;
   grid-template-columns: repeat(auto-fit, 400px);
 }
-
-button {
-  margin-top: 10px;
-}
-
 .info_label {
   padding-bottom: 7px;
 }
-
 input {
   font-size: 12pt;
   font-family: "Josefin Sans", "Roboto", "Helvetica", sans-serif;
   border: 1px solid #ccc;
   border-radius: 5px;
 }
-
 input:focus,
 input:hover {
   box-shadow: 0 0 5px rgba(0, 0, 128, 0.5);
 }
-
 .info_input {
   padding: 5pt;
   max-width: 100pt;
@@ -101,21 +102,18 @@ input:hover {
 
 select {
   width: 100pt;
-  padding: 50pt;
+  padding: 10pt;
   font-family: "Josefin Sans", "Roboto", "Helvetica", sans-serif;
   font-weight: bold;
   font-size: 14px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  background-color: #fff;
 }
-
 select option {
   font-family: "Josefin Sans", "Roboto", "Helvetica", sans-serif;
   padding: 10px;
   font-size: 12px;
 }
-
 select:focus,
 select:hover {
   border: thin solid navy;
@@ -125,13 +123,11 @@ select:hover {
 .stock_input {
   max-width: 50pt;
 }
-
 td, th {
   padding-right: 15pt;
   text-align: center;
   position: relative;
 }
-
 td:not(:last-child)::before,
 th:not(:last-child)::before {
   content: '';
@@ -148,4 +144,23 @@ footer {
   border-radius: 10pt;
   margin: 10pt;
   background-color: grey;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#author,
+#github {
+  padding-top: 10pt;
+  padding-bottom: 10pt;
+}
+#github_link {
+  text-decoration: none;
+  color: white;
+  padding: 10pt;
+  border-radius: 5pt;
+  transition: background-color 0.2s ease-in-out;
+  background-color: grey;
+}
+#github_link:hover {
+  background-color: darkgrey;
 }
