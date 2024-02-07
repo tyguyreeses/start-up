@@ -20,72 +20,68 @@
     </header>
     
     <main>
-      <h1></h1>
-      <p></p>
-      <form method="get" action="compare.html">
-        <section id="company_info">
-            <h3>Company Info</h3>
-            <ul>
-                <li>
-                    <label for="title">Company Name/Job Title: </label>
-                    <input type="text" id="title" />
-                </li>
-                <li>
-                    <label for="salary">Offered Salary: </label>
-                    <input type="text" id="salary" />
-                </li>
-                <li>
-                    <label for="bonus">Bonus: </label>
-                    <input type="text" id="bonus" />
-                </li>
-                <li>
-                    <label for="pay_period">Pay Period:  </label>
-                    <select id="pay_period" name="pay_period">
-                        <option>Monthly</option>
-                        <option>Bi-Weekly</option>
-                        <option>Weekly</option>
-                    </select>
-                </li>
-            </ul>
+      <form class="form" method="get" action="compare.html">
+        <section class="form_section" id="company_info">
+          <h3>Company Info</h3>
+          <div>
+            <label for="title">Company Name: </label>
+            <input type="text" id="title" />
+          </div>
+          <div>
+            <label for="salary">Offered Salary: </label>
+            <input type="text" id="salary" />
+          </div>
+          <div>
+            <label for="bonus">Signing Bonus: </label>
+            <input type="text" id="bonus" />
+          </div>
+          <div>
+            <label for="pay_period">Pay Period:  </label>
+            <select id="pay_period" name="pay_period">
+              <option>Monthly</option>
+              <option>Bi-Weekly</option>
+              <option>Weekly</option>
+            </select>
+          </div>
         </section>
-        <section id="stock_options">
-            <h3>Stock Options</h3>
-            <table>
+        <section class="form_section" id="stock_options">
+          <h3>Stock Options</h3>
+          <table>
             <thead>
-                <tr>
+              <tr>
                 <th>Stock Tag</th>
                 <th># of Shares</th>
                 <th>Price Per Share</th>
-                </tr>
+              </tr>
             </thead>
             <tbody>
-                <tr>
+              <tr>
                 <td>
-                    <input type="text" id="stock_tag" />
+                  <input type="text" id="stock_tag" />
                 </td>
                 <td>
-                    <input type="text" id="stock_amt" />
+                  <input type="text" id="stock_amt" />
                 </td>
                 <td>realtime stock price</td>
-                </tr>
+              </tr>
             </tbody>
-            </table>
-            <li>
+          </table>
+          <li>
             <button onclick="calulate()">Calculate</button>
-            </li>
-            <li>
+          </li>
+          <li>
             <button type="reset">Reset</button>
-            </li>
-            <li>
+          </li>
+          <li>
             <button type="submit">Save Entry</button>
-            </li>
+          </li>
         </section>
       </form>
     </main>
 
     <footer>
-        <span class="text-reset">By Tyler Reese</span>
-        <a href="https://github.com/tyguyreeses/start-up/blob/main/README.md">GitHub</a>
-      </footer>
-    </body>
-  </html>
+      <span class="text-reset">By Tyler Reese</span>
+      <a href="https://github.com/tyguyreeses/start-up/blob/main/README.md">GitHub</a>
+    </footer>
+  </body>
+</html>
