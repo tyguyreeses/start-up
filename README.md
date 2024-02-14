@@ -41,37 +41,37 @@ I'm working on building the basics of a job comparison website. While job search
 
 - **Calling Web Services**
     - A save button that sends the entered job information to the server
-    - retrieving the stock price of the job offer's stock options  
+    - retrieving the stock price of the job offer's stock options
 - **Providing Web Services**
-    - Recieves the job information from the browser and then saves it  
+    - Recieves the job information from the browser and then saves it
 - **Authentication**
-    - Saved login information for a user so they can access previously entered job information  
+    - Saved login information for a user so they can access previously entered job information
 - **Storing Data Persistently**
-    - Previous job offers entered into the system  
+    - Previous job offers entered into the system
 - **Database Data**
-    - Displays previously entered job offer information overviews  
+    - Displays previously entered job offer information overviews
 - **React**
-    - Application ported to the React framework    
+    - Application ported to the React framework
 - **Web Sockets**
-    - I'm going to use web sockets to send a retrieve the entered job information  
+    - I'm going to use web sockets to send a retrieve the entered job information
     - Real time example: updating the displayed stock price in real time
 
 ## HTML Deliverable
 
 - **HTML Pages**
-    - Pages represent the login screen, a job entry screen, a screen to compare all previously entered job offers, and an about page  
+    - Pages represent the login screen, a job entry screen, a screen to compare all previously entered job offers, and an about page
 **Links Betweeen Pages**
-    - Each page is linked in a navigation menu in the header of each page  
+    - Each page is linked in a navigation menu in the header of each page
 - **3rd Party Service Call Placeholder**    
-    - I will call a third party service to retrieve stock price data  
+    - I will call a third party service to retrieve stock price data
 - **Websocket**
-    - I will display real-time information on a specified stock price  
+    - I will display real-time information on a specified stock price
 - **Login Placeholder**
-    - I've included a placeholder for a login screen  
+    - I've included a placeholder for a login screen
 - **Database Data**
-    - I've included a screen to display previously entered job information, stored in the specified user's account  
+    - I've included a screen to display previously entered job information, stored in the specified user's account
 - **Images**
-    - I've included a mockup of a logo for my website as an image  
+    - I've included a mockup of a logo for my website as an image
 
 ## CSS Deliverable
 
