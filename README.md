@@ -76,14 +76,14 @@ I'm working on building the basics of a job comparison website. While job search
 ## CSS Deliverable
 
 - **Header/Footer/Body**
-    - 
+    - I have implemented both a header and footer with a body element on each page
 - **Navigation Elements**
-    - 
+    - I have inplemented a menu in my header to navigate between different pages
 - **Responsive to Window Resizing**
-    -
+    - My website resizes and reformats to match a phone screen and a computer screen
 - **Application Elements**
-    - 
+    - Used constant whitespace between elements
 - **Application Text Elements**
-    - 
+    - Consitent fonts throughout the website
 - **Application Images**
-    - 
+    - Included a logo in both the tab and on the login screen
