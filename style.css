@@ -40,6 +40,15 @@ h1 {
   #buttons {
     width: 50vw
   }
+  .JOI_logo {
+    float: right;
+    margin: 30px;
+    margin-top: 75px;
+    border-radius: 10pt;
+    overflow: hidden;
+    height: 150px;
+    width: 150px;
+  }
 }
 @media (max-width:619px) {
   #username_display {
@@ -50,11 +59,12 @@ h1 {
     grid-template-columns: repeat(auto-fit, 100px);
     grid-gap: 20pt;
   }
-
   .remove_button {
     display: none;
   }
-
+  .JOI_logo {
+    display: none;
+  }
 }
 
 a:hover {
