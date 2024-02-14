@@ -142,8 +142,12 @@ td, th {
   position: relative;
 }
 
+td {
+  font-weight: lighter;
+}
+
 th {
-  font-weight: bold;
+  font-weight: bolder;
 }
 
 td:not(:last-child)::before,
