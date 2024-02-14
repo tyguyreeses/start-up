@@ -50,6 +50,11 @@ h1 {
     grid-template-columns: repeat(auto-fit, 100px);
     grid-gap: 20pt;
   }
+
+  .remove_button {
+    display: none;
+  }
+
 }
 
 a:hover {
