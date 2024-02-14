@@ -141,6 +141,11 @@ td, th {
   text-align: center;
   position: relative;
 }
+
+th {
+  font-weight: bold;
+}
+
 td:not(:last-child)::before,
 th:not(:last-child)::before {
   content: '';
