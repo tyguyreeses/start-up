@@ -27,18 +27,16 @@ I'm working on building the basics of a job comparison website. While job search
 
 
 ## How I'll use each technology
+
 - **HTML**
     - The scructure of the web page in the browser
-
 - **CSS**
     - Formatting of the web page
-
 - **JavaScript**
     - Validates the form was filled out correctly and shows error messages
     - Calculates the overall score of the entered info
     - Updates displayed stock price
     - Sends the data to the server via web sockets
-
 - **Calling Web Services**
     - A save button that sends the entered job information to the server
     - retrieving the stock price of the job offer's stock options
