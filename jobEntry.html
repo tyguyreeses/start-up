@@ -6,17 +6,18 @@
     <title>JobOfferInsight</title>
     <link rel="icon" href="JOI.png" />
     <link rel="stylesheet" href="style.css" />
+    <script src="main.js" defer></script>
   </head>
   <body>
     <header>
-      <aside id="username_display">RandomUser123</aside>
+      <aside id="username_display"></aside>
       <h1>JobOfferInsight</h1>
-      <nav class="menu">
-         <div><a class="menu_control" href="index.html">Home</a></div>
+      <nav id="menu">
+         <!-- <div><a class="menu_control" href="index.html">Home</a></div> -->
          <div><a class="menu_control" href="jobEntry.html">Job Entry</a></div>
          <div><a class="menu_control" href="compare.html">Compare</a></div>
          <div><a class="menu_control" href="about.html">About</a></div>
-         <div><a class="menu_control" href="index.html">Logout</a></div>
+         <div><a class="menu_control" onclick="logout()">Logout</a></div>
       </nav>
     </header>
     

@@ -27,7 +27,7 @@ h1 {
   background-color: grey;
 }
 @media (min-width:620px) {
-  .menu {
+  #menu {
     display: flex;
     flex-direction: rows;
     justify-content: space-between;
@@ -54,7 +54,7 @@ h1 {
   #username_display {
     display: none;
   }
-  .menu {
+  #menu {
     display: grid;
     grid-template-columns: repeat(auto-fit, 100px);
     grid-gap: 20pt;
