@@ -22,7 +22,7 @@
     </header>
     
     <main>
-      <form class="form" method="get" action="compare.html">
+      <form class="form" action="" onsubmit="return false;">
         <section id="data_entry">
           <section class="form_section" id="company_info">
             <h1>Company Info</h1>
@@ -31,7 +31,7 @@
               <input class="info_input" type="text" id="title" />
             </div>
             <div class="info_label">
-              <label for="salary">Offered Salary: </label>
+              <label for="salary">Yearly Salary: </label>
               <input class="info_input" type="text" id="salary" />
             </div>
             <div class="info_label">
@@ -71,15 +71,19 @@
             </table>
           </section>
         </section>
+        <section id="salaryCalculation">
+          <div class="salaryInfo" id="yearlySalary"></div>
+          <div class="salaryInfo" id="monthlySalary"></div>
+        </section>
         <section id="buttons">
           <div>
-            <button onclick="calulate()">Calculate</button>
+            <button id="calculate" onclick="calculateSalary()">Calculate</button>
           </div>
           <div>
-            <button type="reset">Reset</button>
+            <button type="reset" id="reset" onclick="resetStyle()">Reset</button>
           </div>
           <div>
-            <button type="submit">Save Entry</button>
+            <button type="submit" id="submit">Save Entry</button>
           </div>
         </section>
       </form>
