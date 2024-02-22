@@ -133,11 +133,10 @@ input:hover {
 }
 
 #salaryCalculation {
-  display: grid;
-  grid-template-columns: auto auto auto auto auto auto auto auto auto auto;
-  align-items: center;
-  min-width: 50vw;
+  display: flex;
+  justify-content: flex-start;
   margin: 5pt;
+  margin-top: 15pt;
 }
 
 .salaryInfo {
@@ -146,13 +145,10 @@ input:hover {
   background-color: white;
   color: black;
   border-radius: 5px;
-  margin: 5pt;
+  margin-right: 5pt;
   text-align: center;
   max-width: fit-content;
-}
-
-.show {
-  display: block;
+  border: 1px solid #ccc;
 }
 
 select {

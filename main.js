@@ -40,16 +40,30 @@ function logout() {
 
 function calculateSalary() {
     //test the form
-    if(testForm()) {
+    if (testForm()) {
         // access inputted information
         let dataInputs = document.getElementsByClassName('info_input');
         let salary = parseFloat(dataInputs[1].value.trim());
         let bonus = parseFloat(dataInputs[2].value.trim());
-        // calculate yearly and monthly takehome
+        // calculate yearly takehome
         let yearlySalary = salary + bonus;
-        let monthlySalary = yearlySalary / 12;
-        // display calculated salaries by adding a display field into the form in html
-        displayCalculatedSalaries(yearlySalary, monthlySalary);
+        // calculate variable income based on selector
+        let payPeriod = document.getElementById('pay_period');
+        let timeSalary = '';
+        let selector = '';
+        if (payPeriod.value === 'monthly') {
+            timeSalary = yearlySalary / 12;
+            selector = "Monthly";
+        } else if (payPeriod.value === 'biweekly') {
+            timeSalary = yearlySalary / 26;
+            selector = 'Bi-Weekly';
+        } else if (payPeriod.value === 'weekly') {
+            timeSalary = yearlySalary / 52;
+            selector = 'Weekly';
+        }
+        
+        // display calculated salaries
+        displayCalculatedSalaries(yearlySalary, timeSalary, selector);
         
         // show the submit button
         let submit = document.getElementById('submit');
@@ -70,7 +84,7 @@ function testForm() {
         }
         if (i > 0) {
             if (isNaN(inputValue)) {
-                alert("Please enter valid numbers\nDon't include '$' or commas")
+                alert("Please enter valid numbers.\nDon't include '$' or commas.")
                 return false;
             }
         }
@@ -78,17 +92,17 @@ function testForm() {
     return true;
 }
 
-function displayCalculatedSalaries(yearly, monthly) {
+function displayCalculatedSalaries(yearly, variableSalary, selector) {
     // update HTML elements to display calculated salaries
     let yearlySalaryElement = document.getElementById('yearlySalary');
-    let monthlySalaryElement = document.getElementById('monthlySalary');
+    let timeSalaryElement = document.getElementById('timeSalary');
 
-    monthlySalaryElement.style.display= "block";
+    timeSalaryElement.style.display= "block";
     yearlySalaryElement.style.display= "block";
 
     // update the content of the elements
-    yearlySalaryElement.textContent = 'Yearly Salary: $' + yearly.toFixed(2);
-    monthlySalaryElement.textContent = 'Monthly Salary: $' + monthly.toFixed(2);
+    yearlySalaryElement.textContent = 'Yearly Takehome: $' + yearly.toFixed(2);
+    timeSalaryElement.textContent = selector +' Takehome: $' + variableSalary.toFixed(2);
 
 }
 
@@ -98,7 +112,7 @@ function resetStyle() {
     submit.style.display= "none";
     // hide calculated summaries
     let yearlySalaryElement = document.getElementById('yearlySalary');
-    let monthlySalaryElement = document.getElementById('monthlySalary');
-    monthlySalaryElement.style.display= "none";
+    let timeSalaryElement = document.getElementById('timeSalary');
+    timeSalaryElement.style.display= "none";
     yearlySalaryElement.style.display= "none";
 }
