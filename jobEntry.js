@@ -58,13 +58,19 @@ function displayCalculatedSalaries(yearly, variableSalary, selector) {
     // update HTML elements to display calculated salaries
     let yearlySalaryElement = document.getElementById('yearlySalary');
     let timeSalaryElement = document.getElementById('timeSalary');
-
+    let yearlySalaryLabelEl = document.getElementById('yearlySalaryLabel');
+    let timeSalaryLabelEl = document.getElementById('timeSalaryLabel');
+    // display the elements
     timeSalaryElement.style.display= "block";
     yearlySalaryElement.style.display= "block";
+    timeSalaryLabelEl.style.display= "block";
+    yearlySalaryLabelEl.style.display= "block";
 
     // update the content of the elements
-    yearlySalaryElement.textContent = 'Yearly Takehome: $' + yearly.toFixed(2);
-    timeSalaryElement.textContent = selector +' Takehome: $' + variableSalary.toFixed(2);
+    yearlySalaryLabelEl.textContent = 'Yearly Takehome: $';
+    timeSalaryLabelEl.textContent = selector +' Takehome: $';
+    yearlySalaryElement.textContent = yearly.toFixed(2);
+    timeSalaryElement.textContent = variableSalary.toFixed(2);
 
 }
 
@@ -77,4 +83,8 @@ function resetStyle() {
     let timeSalaryElement = document.getElementById('timeSalary');
     timeSalaryElement.style.display= "none";
     yearlySalaryElement.style.display= "none";
+}
+
+function saveEntry() {
+    return true;
 }
