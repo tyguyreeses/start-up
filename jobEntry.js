@@ -60,14 +60,12 @@ function displayCalculatedSalaries(yearly, variableSalary, selector) {
     let timeSalaryElement = document.getElementById('timeSalary');
     let yearlySalaryLabelEl = document.getElementById('yearlySalaryLabel');
     let timeSalaryLabelEl = document.getElementById('timeSalaryLabel');
+    
     // display the elements
-    timeSalaryElement.style.display= "block";
-    yearlySalaryElement.style.display= "block";
     timeSalaryLabelEl.style.display= "block";
     yearlySalaryLabelEl.style.display= "block";
 
     // update the content of the elements
-    yearlySalaryLabelEl.textContent = 'Yearly Takehome: $';
     timeSalaryLabelEl.textContent = selector +' Takehome: $';
     yearlySalaryElement.textContent = yearly.toFixed(2);
     timeSalaryElement.textContent = variableSalary.toFixed(2);
@@ -79,10 +77,10 @@ function resetStyle() {
     let submit = document.getElementById('submit');
     submit.style.display= "none";
     // hide calculated summaries
-    let yearlySalaryElement = document.getElementById('yearlySalary');
-    let timeSalaryElement = document.getElementById('timeSalary');
-    timeSalaryElement.style.display= "none";
-    yearlySalaryElement.style.display= "none";
+    let yearlySalaryEl = document.getElementById('yearlySalaryLabel');
+    let timeSalaryEl = document.getElementById('timeSalaryLabel');
+    timeSalaryEl.style.display= "none";
+    yearlySalaryEl.style.display= "none";
 }
 
 function saveEntry() {
