@@ -155,6 +155,10 @@ input:hover {
   border: 1px solid #ccc;
 }
 
+/* .nestedSalaryinfo {
+  display: inline;
+} */
+
 select {
   width: 100pt;
   padding: 10pt;

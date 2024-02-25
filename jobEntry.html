@@ -73,12 +73,12 @@
           </section>
         </section>
         <section id="salaryCalculation">
-          <div class="salaryInfo" id="yearlySalaryLabel">Yearly Takehome: $<div id="yearlySalary"></div></div>
-          <div class="salaryInfo" id="timeSalaryLabel"><div id="timeSalary"></div></div>
+          <div class="salaryInfo" id="yearlySalaryLabel">Yearly Takehome: $<div class="nestedSalaryInfo" id="yearlySalary"></div></div>
+          <div class="salaryInfo" id="timeSalaryLabel"><div class="nestedSalaryInfo" id="timeSalary"></div></div>
         </section>
         <section id="buttons">
           <div>
-            <button class="entryButton" id="calculate" onclick="calculateSalary()">Calculate</button>
+            <button class="entryButton" id="calculate" onclick="entry.calculateSalary()">Calculate</button>
           </div>
           <div>
             <button class="entryButton" type="reset" id="reset" onclick="resetStyle()">Reset</button>
