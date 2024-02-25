@@ -184,6 +184,7 @@ select:hover {
 }
 td, th {
   padding-right: 15pt;
+  padding-top: 10pt;
   text-align: center;
   position: relative;
 }

@@ -1,37 +1,37 @@
 // function from simon
 
 function loadEntries() {
-    let scores = [];
-    const scoresText = localStorage.getItem('scores');
-    if (scoresText) {
-      scores = JSON.parse(scoresText);
+    let entries = [];
+    const previousEntriesJSON = localStorage.getItem('scores');
+    if (previousEntriesJSON) {
+      entries = JSON.parse(previousEntriesJSON);
     }
   
-    const tableBodyEl = document.querySelector('#scores');
-  
-    if (scores.length) {
-      for (const [i, score] of scores.entries()) {
-        const positionTdEl = document.createElement('td');
+    const tableBodyEl = document.querySelector('#job_entries');
+    
+    if (entries.length) {
+      // for each key value pair [i, entry] in entries
+      for (const [i, entry] of entries.entries()) {
+        // create the td elements
         const nameTdEl = document.createElement('td');
-        const scoreTdEl = document.createElement('td');
-        const dateTdEl = document.createElement('td');
-  
-        positionTdEl.textContent = i + 1;
-        nameTdEl.textContent = score.name;
-        scoreTdEl.textContent = score.score;
-        dateTdEl.textContent = score.date;
-  
+        const yearlyTdEl = document.createElement('td');
+        const periodTdEl = document.createElement('td');
+        // set the value of the td element to the entry in storage
+        nameTdEl.textContent = entry.name;
+        yearlyTdEl.textContent = entry.yearly;
+        periodTdEl.textContent = entry.period;
+        // create the row element and append the td elements to it
         const rowEl = document.createElement('tr');
-        rowEl.appendChild(positionTdEl);
         rowEl.appendChild(nameTdEl);
-        rowEl.appendChild(scoreTdEl);
-        rowEl.appendChild(dateTdEl);
-  
+        rowEl.appendChild(yearlyTdEl);
+        rowEl.appendChild(periodTdEl);
+        // append the created row element to the existing table body
         tableBodyEl.appendChild(rowEl);
       }
     } else {
-      tableBodyEl.innerHTML = '<tr><td colSpan=4>Be the first to score</td></tr>';
+      tableBodyEl.innerHTML = '<tr><td colSpan=3>No entries saved</td></tr>';
     }
+
   }
   
   loadEntries();
