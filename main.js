@@ -19,7 +19,11 @@ function login() {
     if (username && password) {
         localStorage.setItem("username", username); // stores to local storage
         localStorage.setItem("password", password);
-        window.location.href = "compare.html";
+        if (!localStorage.getItem('previousEntreis')) {
+            window.location.href = "jobEntry.html";
+        } else {
+            window.location.href = "compare.html";
+        }
     } else {
         alert("Please enter both username and password");
     }
