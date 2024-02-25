@@ -13,13 +13,13 @@
 //         let payPeriod = document.getElementById('pay_period');
 //         let timeSalary = '';
 //         let selector = '';
-//         if (self.period === 'monthly') {
+//         if (this.period === 'monthly') {
 //             timeSalary = yearlySalary / 12;
 //             selector = "Monthly";
-//         } else if (self.period === 'biweekly') {
+//         } else if (this.period === 'biweekly') {
 //             timeSalary = yearlySalary / 26;
 //             selector = 'Bi-Weekly';
-//         } else if (self.period === 'weekly') {
+//         } else if (this.period === 'weekly') {
 //             timeSalary = yearlySalary / 52;
 //             selector = 'Weekly';
 //         }
@@ -79,6 +79,8 @@ class Entry {
     salary;
     bonus;
     period;
+    calculatedYearly;
+    calculatedPeriod;
     constructor() {
         this.dataInputs = document.getElementsByClassName('info_input'); // gets all the text entry fields
         this.name = this.dataInputs[0].value.trim();
@@ -91,19 +93,20 @@ class Entry {
         if (this.testForm()) {
             // calculate yearly takehome
             let yearlySalary = this.salary + this.bonus;
+            this.calculatedYearly = yearlySalary;
             let periodSalary = '';
             let selector = '';
-            if (self.period === 'monthly') {
+            if (this.period === 'monthly') {
                 periodSalary = yearlySalary / 12;
                 selector = "Monthly";
-            } else if (self.period === 'biweekly') {
+            } else if (this.period === 'biweekly') {
                 periodSalary = yearlySalary / 26;
                 selector = 'Bi-Weekly';
-            } else if (self.period === 'weekly') {
+            } else if (this.period === 'weekly') {
                 periodSalary = yearlySalary / 52;
                 selector = 'Weekly';
             }
-            
+            this.calculatedPeriod = periodSalary;
             // display calculated salaries
             this.displayCalculatedSalaries(yearlySalary, periodSalary, selector);
             
@@ -116,8 +119,8 @@ class Entry {
     }
 
     testForm() {
-        for (let i = 0; i < self.dataInputs.length; i++) {
-            let input = self.dataInputs[i];
+        for (let i = 0; i < this.dataInputs.length; i++) {
+            let input = this.dataInputs[i];
             let inputValue = input.value.trim();
             if (inputValue === '') {
                 alert('Please fill in all fields.');
@@ -152,7 +155,15 @@ class Entry {
     }
 
     saveEntry() {
-
+        const previousEntriesJSON = localStorage.getItem('previousEntries');
+        const previousEntries = previousEntriesJSON ? JSON.parse(previousEntriesJSON) : [];
+        const newEntry = {
+            name: this.name,
+            yearly: this.calculatedYearly,
+            period: this.calculatedPeriod
+        }
+        previousEntries.push(newEntry);
+        localStorage.setItem('previousEntries', JSON.stringify(previousEntries));
     }
 }
 
