@@ -17,19 +17,19 @@ class Entry {
             this.calculatedYearly = yearlySalary;
             let periodSalary = '';
             let selector = '';
-            if (this.period === 'monthly') {
+            if (this.period === ' Monthly') {
                 periodSalary = yearlySalary / 12;
                 selector = "Monthly";
-            } else if (this.period === 'biweekly') {
+            } else if (this.period === ' Bi-Weekly') {
                 periodSalary = yearlySalary / 26;
                 selector = 'Bi-Weekly';
-            } else if (this.period === 'weekly') {
+            } else if (this.period === ' Weekly') {
                 periodSalary = yearlySalary / 52;
                 selector = 'Weekly';
             }
-            this.calculatedPeriod = periodSalary;
+            this.calculatedPeriod = parseFloat(periodSalary).toFixed(2);
             // display calculated salaries
-            this.displayCalculatedSalaries(yearlySalary, periodSalary, selector);
+            this.displayCalculatedSalaries(yearlySalary, selector);
             
             // show the submit button
             document.getElementById('submit').style.display= "block";
@@ -40,7 +40,6 @@ class Entry {
     }
 
     testForm() {
-        console.log("testForm: " + document.getElementById('timeSalary'));
         // set initial values
         this.dataInputs = document.getElementsByClassName('info_input'); // gets all the text entry fields
         this.name = this.dataInputs[0].value.trim();
@@ -68,7 +67,7 @@ class Entry {
         return true;
     }
 
-    displayCalculatedSalaries(yearly, variableSalary, selector) {
+    displayCalculatedSalaries(yearly, selector) {
         // update HTML elements to display calculated salaries
         const yearlySalaryElement = document.getElementById('yearlySalary');
         const timeSalaryElement = document.getElementById('timeSalary');
@@ -82,20 +81,22 @@ class Entry {
         // update the content of the elements
         timeSalaryLabelEl.firstChild.nodeValue = selector +' Takehome: $'; // firstChild.nodeValue doesn't affect nested div
         yearlySalaryElement.textContent = yearly.toFixed(2);
-        timeSalaryElement.textContent = variableSalary.toFixed(2);
+        timeSalaryElement.textContent = this.calculatedPeriod;
     
     }
 
     saveEntry() {
+        console.log("saveEntry function was executed");
         const previousEntriesJSON = localStorage.getItem('previousEntries');
         const previousEntries = previousEntriesJSON ? JSON.parse(previousEntriesJSON) : [];
         const newEntry = {
             name: this.name,
-            yearly: this.calculatedYearly,
-            period: this.calculatedPeriod
+            yearly: "$" + this.calculatedYearly,
+            period: "$" + this.calculatedPeriod + this.period
         }
         previousEntries.push(newEntry);
         localStorage.setItem('previousEntries', JSON.stringify(previousEntries));
+        window.location.href = "compare.html";
     }
 }
 

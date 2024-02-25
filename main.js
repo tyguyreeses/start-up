@@ -36,6 +36,6 @@ function displayUsername() {
 }
 
 function logout() {
-    localStorage.removeItem("username");
+    localStorage.clear();
     window.location.href = "index.html";
 }

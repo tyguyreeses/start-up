@@ -4,8 +4,8 @@ body {
   font-family: "Josefin Sans", "Roboto", "Helvetica", sans-serif;
   color: white;
   font-weight: bold;
+  font-size: 12pt;
 }
-
 header {
   padding: 10pt;
   padding-bottom: 15pt;
@@ -66,11 +66,9 @@ h1 {
     display: none;
   }
 }
-
 a:hover {
   background-color: darkgrey;
 }
-
 main {
   padding: 10pt;
   border-radius: 10pt;
@@ -81,7 +79,7 @@ main {
 button {
   font-family: "Josefin Sans", "Roboto", "Helvetica", sans-serif;
   padding: 10px 20px;
-  font-size: 16px;
+  font-size: 12pt;
   border: none;
   border-radius: 5pt;
   cursor: pointer;
@@ -98,11 +96,9 @@ button:hover {
   justify-content: flex-start;
   align-items: center;
 }
-
 .entryButton {
   margin-right: 15pt;
 }
-
 .login_div {
   padding-bottom: 7pt;
 }
@@ -131,18 +127,15 @@ input:hover {
   padding: 5pt;
   max-width: 100pt;
 }
-
 #submit {
   display: none;
 }
-
 #salaryCalculation {
   display: flex;
   justify-content: flex-start;
   margin: 5pt;
   margin-top: 15pt;
 }
-
 .salaryInfo {
   display: none;
   padding: 5pt;
@@ -154,60 +147,66 @@ input:hover {
   max-width: fit-content;
   border: 1px solid #ccc;
 }
-
-/* .nestedSalaryinfo {
-  display: inline;
-} */
-
 select {
   width: 100pt;
   padding: 10pt;
   font-family: "Josefin Sans", "Roboto", "Helvetica", sans-serif;
   font-weight: bold;
-  font-size: 14px;
+  font-size: 12pt;
   border: 1px solid #ccc;
   border-radius: 5px;
 }
 select option {
   font-family: "Josefin Sans", "Roboto", "Helvetica", sans-serif;
   padding: 10px;
-  font-size: 12px;
+  font-size: 12pt;
 }
 select:focus,
 select:hover {
   border: thin solid navy;
   box-shadow: 0 0 5px rgba(0, 0, 128, 0.5);
 }
-
 .stock_input {
   max-width: 50pt;
 }
+table {
+  border-collapse: collapse;
+}
 td, th {
   padding-right: 15pt;
-  padding-top: 10pt;
+  margin-top: 10pt;
+  padding: 7pt;
   text-align: center;
   position: relative;
 }
-
 td {
   font-weight: lighter;
+  font-size: 14pt;
 }
-
 th {
   font-weight: bolder;
 }
-
+td:first-child {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+td:last-child {
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
 td:not(:last-child)::before,
 th:not(:last-child)::before {
   content: '';
   position: absolute;
   top: -2pt;
-  right: 5pt;
+  right: -2pt;
   height: 120%;
   width: 2px;
   background-color: white;
 }
-
+tr:has(td):nth-child(odd) {
+  background-color: rgb(190, 190, 190);
+}
 footer {
   padding: 10pt;
   border-radius: 10pt;

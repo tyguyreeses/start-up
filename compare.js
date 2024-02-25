@@ -1,14 +1,12 @@
-// function from simon
-
 function loadEntries() {
     let entries = [];
-    const previousEntriesJSON = localStorage.getItem('scores');
+    const previousEntriesJSON = localStorage.getItem('previousEntries');
     if (previousEntriesJSON) {
       entries = JSON.parse(previousEntriesJSON);
     }
-  
+
     const tableBodyEl = document.querySelector('#job_entries');
-    
+
     if (entries.length) {
       // for each key value pair [i, entry] in entries
       for (const [i, entry] of entries.entries()) {
@@ -31,7 +29,6 @@ function loadEntries() {
     } else {
       tableBodyEl.innerHTML = '<tr><td colSpan=3>No entries saved</td></tr>';
     }
-
   }
   
   loadEntries();
