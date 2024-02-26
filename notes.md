@@ -61,3 +61,64 @@ const ta = ["aaaa","aaaaaa"]; /* returns true */
 console.log(testAll(fa, (i) => i.length > 3));
 console.log(testAll(ta, (i) => i.length > 3));
 ```
+
+## Arrow Functions
+
+arrow functions replace regular function definitions to reduce size and increase readability. They also change the funtion of `this`, but that is an area to explore another day
+
+Examples of converted functions:
+```
+function add(num1, num2) {
+    return num1 + num2;
+}
+
+let add = (num1, num2) => num1 + num2;
+
+// add(1,3) would both output 4
+```
+
+This is especially useful for functions that require a funciton as an input, like `.sort()` and `.forEach()`. Let's look at `.forEach()` first.
+
+### .forEach()
+
+Without an arrow function, you have to define the function first, then pass it in:
+```
+const numbers = [1,2,3,4,5];
+
+function increment(num) {
+    return ++num;
+}
+
+numbers.forEach(increment);
+```
+You can also use an "anonymous function" to do it in one step, but it's visually clunky and hard to read:
+```
+numbers.forEach(function(num) {
+    return ++num;
+});
+```
+
+With an arrow function, you can do it all in one step and in one line, and it's very easy to see how it works:
+```
+numbers.forEach(num => ++num);
+```
+
+### .sort() 
+
+`.sort()` works by converting each element in an array to a string, then sorting alphabetically. That doesn't work well for an array of numbers, as it would sort "108" as being "smaller" than "5" since it starts with "1". This is easily fixed with an arrow function:
+
+```
+const numbers = [5, 2, 8, 1, 3];
+
+numbers.sort((a, b) => b - a);
+
+// Output: [8, 5, 3, 2, 1]
+```
+Note that when the function passed into the `.sort()` method returns a negative value, it doesn't swap the values, and when it returns a postive value, it does swap them. To sort in ascending order the arrow function would be `(a,b) => a - b`.
+
+Compare to using an anonymous function:
+```
+numbers.sort(function(a, b) {
+    return b - a;
+});
+```
