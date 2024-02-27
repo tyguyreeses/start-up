@@ -122,3 +122,72 @@ numbers.sort(function(a, b) {
     return b - a;
 });
 ```
+
+## Promises
+
+Promises allow for the asynchronus execution of code. If a process takes a long time, like downloading an image, and you don't want to slow down the entire program, you can use a promise to initiate the download, do other things with your program while the download runs in the background, then check back in later to see if the download was successful or not.
+
+Let's break it down using pseudocode:
+```
+let p = new Promise((resolve, reject) => {
+    *download image*            // time consuming process
+    if (*download complete*) {
+        resolve("success");
+    } else {
+        reject("failure")
+    }
+});
+```
+Let's look now at how to do the "check back in later." This code is written when you want to initiate the download, and when the download is complete it immediately jumps back to it to execute what is in either the `.then()` block (Promise resolved), or the `.catch()` block (Promise rejected).
+
+```
+p.then((message) => {
+    // executed if successfull
+    console.log('image download was a ' + message)
+}).catch((message) => {
+    // executed if unsuccessful
+    console.log('image download was a ' + message)
+})
+```
+
+## Async and Await
+
+`async'/'await` is a cleaner way of dealing with promises, making nested or chained promises much easier to deal with. Let's take a look at a simple example involving a program that makes requests to Google. Two functions return a promise, one checking if a request is allowed and the second processing that request:
+
+```
+function makeRequest(location) {
+    return new Promise((resolve, reject) =› { 
+        console.log('Making Request to ${location}')
+        if (location === 'Google') {
+            resolve('Google says hi')
+        } else {
+            reject('We can only talk to Google')
+        }
+    }
+)}
+
+function processRequest(response) {
+    return new Promise((resolve, reject) => {
+        console.log('Processing response')
+        resolve('Response info: ${response}')
+    }
+)}
+```
+Note that the second function will never reject; this is just for demonstration purposes. Now let's look at how we can handle these two functions with `async` and `await` using an asynchronus function:
+
+```
+async function doWork() {
+    try {
+        const response = await makeRequest('Google') // long process
+        console.log('Response recieved')
+        const processedResponse = await processRequest(response) // long process
+        console.log(processedResponse)
+    } catch (err) {
+        console.log(err)
+    }
+}
+```
+The function definition is preceeded by `async`. This allows the function to run asynchronously with the rest of the code. 
+Each time the code encounters a promise that takes an extended amount of time, it uses the `await` keyword to allow the code to go do something else while it waits. 
+As soon as it executes, it finishes the next block of code until it hits the second `await` section, where it then repeats the same process. 
+The whole thing is surrounded with a `try/except` block so it can catch any rejected Promises, like if we attempted to make a request to Facebook instead of Google.
