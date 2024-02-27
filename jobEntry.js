@@ -1,17 +1,45 @@
 // Calulate Functionality
 
-
 class Entry {
     dataInputs;
     name;
     salary;
-    bonus;
+    bonus = 0;
     period;
     calculatedYearly;
     calculatedPeriod;
+    stock;
+
+    testForm() {
+        // set initial values
+        this.dataInputs = document.getElementsByClassName('info_input'); // gets all the text entry fields
+        this.name = this.dataInputs[0].value.trim();
+        this.salary = parseFloat(this.dataInputs[1].value.trim());
+        this.bonus = this.dataInputs[2].value.trim() ? parseFloat(this.dataInputs[2].value.trim()) : 0.00;
+        this.period = document.getElementById('pay_period').value;
+        this.stock = 0.00;
+
+        for (let i = 0; i < this.dataInputs.length; i++) {
+            let input = this.dataInputs[i];
+            let inputValue = input.value.trim();
+            if (inputValue === '') {
+                alert('Please fill in all fields.');
+                return false;
+            }
+            if (i > 0) {
+                if (isNaN(inputValue)) {
+                    alert("Please enter a valid input.\nDon't include '$' or commas.")
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
 
     calculateSalary() {
         if (this.testForm()) {
+            // calculate stock grants
+            this.calculateStock();
             // calculate yearly takehome
             let yearlySalary = this.salary + this.bonus;
             this.calculatedYearly = yearlySalary;
@@ -39,44 +67,17 @@ class Entry {
         }
     }
 
-    testForm() {
-        // set initial values
-        this.dataInputs = document.getElementsByClassName('info_input'); // gets all the text entry fields
-        this.name = this.dataInputs[0].value.trim();
-        this.salary = parseFloat(this.dataInputs[1].value.trim());
-        this.bonus = parseFloat(this.dataInputs[2].value.trim());
-        this.period = document.getElementById('pay_period').value;
-        if (!this.dataInputs.length) {
-            alert('FILL IN THE FORM');
-            return false;
-        }
-        for (let i = 0; i < this.dataInputs.length; i++) {
-            let input = this.dataInputs[i];
-            let inputValue = input.value.trim();
-            if (inputValue === '') {
-                alert('Please fill in all fields.');
-                return false;
-            }
-            if (i > 0) {
-                if (isNaN(inputValue)) {
-                    alert("Please enter a valid input.\nDon't include '$' or commas.")
-                    return false;
-                }
-            }
-        }
-        return true;
-    }
-
     displayCalculatedSalaries(yearly, selector) {
         // update HTML elements to display calculated salaries
         const yearlySalaryElement = document.getElementById('yearlySalary');
         const timeSalaryElement = document.getElementById('timeSalary');
-        const yearlySalaryLabelEl = document.getElementById('yearlySalaryLabel');
         const timeSalaryLabelEl = document.getElementById('timeSalaryLabel');
         
         // display the elements
-        timeSalaryLabelEl.style.display= "block";
-        yearlySalaryLabelEl.style.display= "block";
+        const salaryInfo = document.getElementsByClassName('salaryInfo');
+        for (let item of salaryInfo) {
+            item.style.display = 'block';
+        }
     
         // update the content of the elements
         timeSalaryLabelEl.firstChild.nodeValue = selector +' Takehome: $'; // firstChild.nodeValue doesn't affect nested div
@@ -85,8 +86,19 @@ class Entry {
     
     }
 
+    calculateStock() {
+        // will be replaced by websocket feature to retrieve live stock data
+        const stockPrice = Math.floor(Math.random() * 300); 
+        console.log("Random stock price is: " +stockPrice)
+        const stockEl = document.getElementById("stock_amt").value;
+        this.stock = stockEl ? parseFloat(stockEl.trim() * stockPrice).toFixed(2) : 0.00;
+
+        // update the content of the elements
+        const calculatedStockEl = document.getElementById('stockDisplay')
+        calculatedStockEl.textContent = this.stock;
+    }
+
     saveEntry() {
-        console.log("saveEntry function was executed");
         const previousEntriesJSON = localStorage.getItem('previousEntries');
         const previousEntries = previousEntriesJSON ? JSON.parse(previousEntriesJSON) : [];
         const newEntry = {
@@ -105,10 +117,10 @@ function resetStyle() {
     const submit = document.getElementById('submit');
     submit.style.display= "none";
     // hide calculated summaries
-    const yearlySalaryEl = document.getElementById('yearlySalaryLabel');
-    const timeSalaryEl = document.getElementById('timeSalaryLabel');
-    timeSalaryEl.style.display= "none";
-    yearlySalaryEl.style.display= "none";
+    const salaryInfo = document.getElementsByClassName('salaryInfo');
+        for (item of salaryInfo) {
+            item.style.diplay = 'none';
+        }
 }
 
 const entry = new Entry();
