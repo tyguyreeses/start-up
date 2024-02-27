@@ -149,7 +149,7 @@ input:hover {
 }
 select {
   width: 100pt;
-  padding: 10pt;
+  padding: 5pt;
   font-family: "Josefin Sans", "Roboto", "Helvetica", sans-serif;
   font-weight: bold;
   font-size: 12pt;
