@@ -85,3 +85,19 @@ I'm working on building the basics of a job comparison website. While job search
     - Consitent fonts throughout the website
 - **Application Images**
     - Included a logo in both the tab and on the login screen
+
+## JavaScript Deliverable
+
+- **Future Login Support**
+    - I've included username and password placeholders using local storage to store the entered information as well as displaying the username when "logged in." As of right now, "logging out" just clears the local storage.
+- **Future Database Data**
+    - The data I'll be storing in my future database will be the username and password login information as well as all previously entered job offers so the user can save data between sessions.
+- **Future Websocket Functionality**
+    - If it doesn't prove too difficult with my extremely limited background, the final product will find the current price of a stock based on the ticker symbol entered into the job entry form and will then perform live updates on the comparison screen. For now, I've implemented a placeholder that randomly assigns a stock price.
+- **Application Interaction Logic**
+    - It's still a little clumsy due to my lack of understanding how the big picture would look when designing my HTML and CSS, but interaction logic includes navigation between the entry and comparison screens and a logout button, as well as the functionality of consolidating the entered information into a two or three categories that are then displayed in rows on the comparison screen.
+- **Future Features**
+    - I have a couple plans for features I would like to add beyond the extent of this assignment once I have more time. They are as follows:
+        - Incorporating tax information to give a more accurate representation of takehome salary
+        - Adding a "signing bonus" field
+        - Taking into account provided insurance and retirement benefits 
