@@ -1,10 +1,16 @@
+let sortDirection = 1;
+let entriesData = [];
+
 function loadEntries() {
-    let entries = [];
     const previousEntriesJSON = localStorage.getItem('previousEntries');
     if (previousEntriesJSON) {
-      entries = JSON.parse(previousEntriesJSON);
+      entriesData = JSON.parse(previousEntriesJSON);
     }
+    displayEntries(entriesData);
+  }
 
+  function displayEntries(entries) {
+    // finds the table element excluding the headers
     const tableBodyEl = document.querySelector('#job_entries');
 
     if (entries.length) {
@@ -32,6 +38,14 @@ function loadEntries() {
     } else {
       tableBodyEl.innerHTML = '<tr><td colSpan=3>No entries saved</td></tr>';
     }
+  }
+
+  // in progress, copied over from the codePen at https://codepen.io/Ty-Reese/pen/oNVOEJr?editors=0010
+  function sortColumn(column) {
+    // sortDirection *= -1;
+    // let sortBy = column.innerText;
+    // const sortedData = entriesData.sort((a, b) => (a[sortBy] > b[sortBy] ? 1 : -1) * sortDirection);
+    // displayEntries(sortedData);
   }
   
   loadEntries();
