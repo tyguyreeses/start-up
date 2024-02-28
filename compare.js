@@ -14,15 +14,18 @@ function loadEntries() {
         const nameTdEl = document.createElement('td');
         const yearlyTdEl = document.createElement('td');
         const periodTdEl = document.createElement('td');
+        const stockTdEl = document.createElement('td');
         // set the value of the td element to the entry in storage
         nameTdEl.textContent = entry.name;
         yearlyTdEl.textContent = entry.yearly;
         periodTdEl.textContent = entry.period;
+        stockTdEl.textContent = entry.stock;
         // create the row element and append the td elements to it
         const rowEl = document.createElement('tr');
         rowEl.appendChild(nameTdEl);
         rowEl.appendChild(yearlyTdEl);
         rowEl.appendChild(periodTdEl);
+        rowEl.appendChild(stockTdEl);
         // append the created row element to the existing table body
         tableBodyEl.appendChild(rowEl);
       }

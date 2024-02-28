@@ -89,7 +89,8 @@ class Entry {
     calculateStock() {
         // will be replaced by websocket feature to retrieve live stock data
         const stockPrice = Math.floor(Math.random() * 300); 
-        console.log("Random stock price is: " +stockPrice)
+        const priceEl = document.getElementById('stock_price');
+        priceEl.textContent = "$" + stockPrice;
         const stockEl = document.getElementById("stock_amt").value;
         this.stock = stockEl ? parseFloat(stockEl.trim() * stockPrice).toFixed(2) : 0.00;
 
@@ -104,7 +105,8 @@ class Entry {
         const newEntry = {
             name: this.name,
             yearly: "$" + this.calculatedYearly,
-            period: "$" + this.calculatedPeriod + this.period
+            period: "$" + this.calculatedPeriod + this.period,
+            stock: "$" + this.stock
         }
         previousEntries.push(newEntry);
         localStorage.setItem('previousEntries', JSON.stringify(previousEntries));

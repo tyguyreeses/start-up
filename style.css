@@ -207,6 +207,9 @@ th:not(:last-child)::before {
 tr:has(td):nth-child(odd) {
   background-color: rgb(190, 190, 190);
 }
+#stock_price {
+  color: black;
+}
 footer {
   padding: 10pt;
   border-radius: 10pt;
