@@ -101,3 +101,5 @@ I'm working on building the basics of a job comparison website. While job search
         - Incorporating tax information to give a more accurate representation of takehome salary
         - Adding a "signing bonus" field
         - Taking into account provided insurance and retirement benefits 
+        - Potentially adding "expenses" information tied to the specific user to deduct monthly and yearly payments from all calculated yearly and monthly salaries. (long ways down the road)
+        - Who knows? This might turn into a financial planner/budgeting website on top of a job offer comparison application.
