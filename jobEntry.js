@@ -1,3 +1,6 @@
+// Stock Price Websocket
+const StockSocket = require("stocksocket");
+
 // Calulate Functionality
 
 class Entry {
@@ -8,6 +11,7 @@ class Entry {
     period;
     calculatedYearly;
     calculatedPeriod;
+    stockTicker;
     stock;
 
     testForm() {
@@ -17,6 +21,7 @@ class Entry {
         this.salary = parseFloat(this.dataInputs[1].value.trim());
         this.bonus = this.dataInputs[2].value.trim() ? parseFloat(this.dataInputs[2].value.trim()) : 0.00;
         this.period = document.getElementById('pay_period').value;
+        this.stockTicker = document.getElementById('stock_tag').value;
         this.stock = 0.00;
 
         for (let i = 0; i < this.dataInputs.length; i++) {
@@ -39,7 +44,9 @@ class Entry {
     calculateSalary() {
         if (this.testForm()) {
             // calculate stock grants
-            this.calculateStock();
+            if(this.stockTicker) {
+                this.calculateStock();
+            }
             // calculate yearly takehome
             let yearlySalary = this.salary + this.bonus;
             this.calculatedYearly = yearlySalary;
@@ -87,16 +94,14 @@ class Entry {
     }
 
     calculateStock() {
-        // will be replaced by websocket feature to retrieve live stock data
-        const stockPrice = Math.floor(Math.random() * 300); 
-        const priceEl = document.getElementById('stock_price');
-        priceEl.textContent = "$" + stockPrice;
-        const stockEl = document.getElementById("stock_amt").value;
-        this.stock = stockEl ? parseFloat(stockEl.trim() * stockPrice).toFixed(2) : 0.00;
+        try {
+            StockSocket.addTicker(this.stockTicker, this.stockPriceChanged); // sets up live updates
+            StockSocket.removeAllTickers(); // remove live funcitonality after one update
+        } catch (error) {
+            console.error("Error in calculateStock: ", error);
+            alert("Please enter a valid ticker symbol or leave entry field blank")
+        }
 
-        // update the content of the elements
-        const calculatedStockEl = document.getElementById('stockDisplay')
-        calculatedStockEl.textContent = this.stock;
     }
 
     saveEntry() {
@@ -112,6 +117,19 @@ class Entry {
         localStorage.setItem('previousEntries', JSON.stringify(previousEntries));
         window.location.href = "compare.html";
     }
+
+    stockPriceChanged(data) {
+        //Choose what to do with your data as it comes in.
+        // update price per share
+        const priceEl = document.getElementById('stock_price');
+        this.stock = data.price.toFixed(2);
+        console.log(this.stock);
+        priceEl.textContent = "$" + this.stock;
+        // update total stock display
+        const stockDisplayEl = document.getElementById('stockDisplay');
+        const stockAmtEl = document.getElementById("stock_amt").value;
+        stockDisplayEl.textContent = this.stock * stockAmtEl;
+      }
 }
 
 function resetStyle() {
@@ -121,7 +139,7 @@ function resetStyle() {
     // hide calculated summaries
     const salaryInfo = document.getElementsByClassName('salaryInfo');
         for (item of salaryInfo) {
-            item.style.diplay = 'none';
+            item.style.display = 'none';
         }
 }
 
