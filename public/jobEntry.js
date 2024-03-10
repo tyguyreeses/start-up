@@ -123,6 +123,7 @@ class Entry {
             // Store what the service gave us as the new entry
             const entries = await response.json();
             localStorage.setItem('entries', JSON.stringify(entries));
+            window.location.href = "compare.html";
           } catch {
             // If there was an error then just track scores locally
             this.updateEntriesLocal(newEntry);
@@ -132,7 +133,7 @@ class Entry {
     updateEntriesLocal(newEntry) {
         const previousEntriesJSON = localStorage.getItem('previousEntries');
         const previousEntries = previousEntriesJSON ? JSON.parse(previousEntriesJSON) : [];
-        
+
         previousEntries.push(newEntry);
         localStorage.setItem('previousEntries', JSON.stringify(previousEntries));
         window.location.href = "compare.html";

@@ -1,12 +1,30 @@
-let sortDirection = 1;
-let entriesData = [];
+// let sortDirection = 1;
+// let entriesData = [];
 
-function loadEntries() {
-    const previousEntriesJSON = localStorage.getItem('previousEntries');
-    if (previousEntriesJSON) {
-      entriesData = JSON.parse(previousEntriesJSON);
+async function loadEntries() {
+    // const previousEntriesJSON = localStorage.getItem('previousEntries');
+    // if (previousEntriesJSON) {
+    //   entriesData = JSON.parse(previousEntriesJSON);
+    // }
+    // displayEntries(entriesData);
+
+    let entries = [];
+    try {
+      // Get the latest entries from the service
+      const response = await fetch('/api/entries');
+      entries = await response.json();
+  
+      // Save the scores in case we go offline in the future
+      localStorage.setItem('entries', JSON.stringify(entries));
+    } catch {
+      // If there was an error then just use the last saved scores
+      const entriesText = localStorage.getItem('entries');
+      if (entriesText) {
+        entries = JSON.parse(entriesText);
+      }
     }
-    displayEntries(entriesData);
+    displayEntries(entries);
+
   }
 
   function displayEntries(entries) {
@@ -38,14 +56,6 @@ function loadEntries() {
     } else {
       tableBodyEl.innerHTML = '<tr><td colSpan=3>No entries saved</td></tr>';
     }
-  }
-
-  // in progress, copied over from the codePen at https://codepen.io/Ty-Reese/pen/oNVOEJr?editors=0010
-  function sortColumn(column) {
-    // sortDirection *= -1;
-    // let sortBy = column.innerText;
-    // const sortedData = entriesData.sort((a, b) => (a[sortBy] > b[sortBy] ? 1 : -1) * sortDirection);
-    // displayEntries(sortedData);
   }
   
   loadEntries();

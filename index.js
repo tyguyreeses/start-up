@@ -38,7 +38,10 @@ app.listen(port, () => {
 // The high scores are saved in memory and disappear whenever the service is restarted.
 let entries = [];
 function updateEntries(newEntry, entries) {
-  entries.push(newEntry);
-
-  return entries;
+    if (!entries.includes(newEntry)) {
+        entries.push(newEntry); // Add the new entry only if it doesn't exist
+    } else {
+        console.log("Entry already exists. Not adding duplicate.");
+    }
+      return entries;
 }
