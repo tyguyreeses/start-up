@@ -1,5 +1,5 @@
 // Stock Price Websocket
-const StockSocket = require("stocksocket");
+// const StockSocket = require("stocksocket");
 
 // Calulate Functionality
 
@@ -95,42 +95,62 @@ class Entry {
     }
 
     calculateStock() {
-        try {
-            StockSocket.addTicker(this.stockTicker, this.stockPriceChanged); // sets up live updates
-            StockSocket.removeAllTickers(); // remove live funcitonality after one update
-        } catch (error) {
-            console.error("Error in calculateStock: ", error);
-            alert("Please enter a valid ticker symbol or leave entry field blank")
-        }
+        // try {
+        //     StockSocket.addTicker(this.stockTicker, this.stockPriceChanged); // sets up live updates
+        //     StockSocket.removeAllTickers(); // remove live funcitonality after one update
+        // } catch (error) {
+        //     console.error("Error in calculateStock: ", error);
+        //     alert("Please enter a valid ticker symbol or leave entry field blank")
+        // }
 
     }
 
-    saveEntry() {
-        const previousEntriesJSON = localStorage.getItem('previousEntries');
-        const previousEntries = previousEntriesJSON ? JSON.parse(previousEntriesJSON) : [];
+    async saveEntry() {
         const newEntry = {
             name: this.name,
             yearly: "$" + this.calculatedYearly,
             period: "$" + this.calculatedPeriod + this.period,
             stock: "$" + this.stock
         }
+
+        try {
+            const response = await fetch('/api/entry', {
+              method: 'POST',
+              headers: {'content-type': 'application/json'},
+              body: JSON.stringify(newEntry),
+            });
+      
+            // Store what the service gave us as the new entry
+            const entries = await response.json();
+            localStorage.setItem('entries', JSON.stringify(entries));
+          } catch {
+            // If there was an error then just track scores locally
+            this.updateEntriesLocal(newEntry);
+          }
+    }
+
+    updateEntriesLocal(newEntry) {
+        const previousEntriesJSON = localStorage.getItem('previousEntries');
+        const previousEntries = previousEntriesJSON ? JSON.parse(previousEntriesJSON) : [];
+        
         previousEntries.push(newEntry);
         localStorage.setItem('previousEntries', JSON.stringify(previousEntries));
         window.location.href = "compare.html";
     }
 
-    stockPriceChanged(data) {
-        //Choose what to do with your data as it comes in.
-        // update price per share
-        const priceEl = document.getElementById('stock_price');
-        this.stock = data.price.toFixed(2);
-        console.log(this.stock);
-        priceEl.textContent = "$" + this.stock;
-        // update total stock display
-        const stockDisplayEl = document.getElementById('stockDisplay');
-        const stockAmtEl = document.getElementById("stock_amt").value;
-        stockDisplayEl.textContent = this.stock * stockAmtEl;
-      }
+// This is a third-party function from "StockSocket"
+//     stockPriceChanged(data) {
+//         //Choose what to do with your data as it comes in.
+//         // update price per share
+//         const priceEl = document.getElementById('stock_price');
+//         this.stock = data.price.toFixed(2);
+//         console.log(this.stock);
+//         priceEl.textContent = "$" + this.stock;
+//         // update total stock display
+//         const stockDisplayEl = document.getElementById('stockDisplay');
+//         const stockAmtEl = document.getElementById("stock_amt").value;
+//         stockDisplayEl.textContent = this.stock * stockAmtEl;
+//       }
 }
 
 function resetStyle() {
