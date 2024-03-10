@@ -20,7 +20,7 @@ apiRouter.get('/entries', (_req, res) => {
 });
 
 // SubmitEntry
-apiRouter.post('/entries', (req, res) => {
+apiRouter.post('/entry', (req, res) => {
   scores = updateEntries(req.body, entries);
   res.send(entries);
 });
