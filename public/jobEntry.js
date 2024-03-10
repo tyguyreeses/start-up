@@ -45,7 +45,8 @@ class Entry {
         if (this.testForm()) {
             // calculate stock grants
             if(this.stockTicker) {
-                this.calculateStock();
+                console.log("Haven't added this funcitonality yet");
+                // this.calculateStock();
             }
             // calculate yearly takehome
             let yearlySalary = this.salary + this.bonus;
