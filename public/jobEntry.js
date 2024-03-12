@@ -45,7 +45,7 @@ class Entry {
         if (this.testForm()) {
             // calculate stock grants
             if(this.stockTicker) {
-                this.calculateStock();
+                this.getStockPrice();
             }
             // calculate yearly takehome
             let yearlySalary = this.salary + this.bonus;
