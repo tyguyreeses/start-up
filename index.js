@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const StockSocket = require('stocksocket');
 
 // The service port. In production the front-end code is statically hosted by the service on the same port.
 const port = process.argv.length > 2 ? process.argv[2] : 4000;
@@ -21,7 +22,7 @@ apiRouter.get('/entries', (_req, res) => {
 
 // SubmitEntry
 apiRouter.post('/entry', (req, res) => {
-  scores = updateEntries(req.body, entries);
+  entries = updateEntries(req.body, entries);
   res.send(entries);
 });
 
@@ -45,3 +46,29 @@ function updateEntries(newEntry, entries) {
     }
       return entries;
 }
+
+
+// Stock Socket Functionality
+// Get the stock price for calculation
+app.post('/getStockPrice', (req, res) => {
+    const { ticker } = req.body;
+  
+    let isFirstUpdate = true;
+
+    function stockPriceChanged(data) {
+        const stockPrice = data.price;
+
+        // Send the stock price to the client
+        res.send({ price: stockPrice });
+
+        // Remove the ticker after the first update
+        if (isFirstUpdate) {
+            StockSocket.removeTicker(ticker);
+            isFirstUpdate = false;
+        }
+    }
+
+    // Add the ticker with the callback for the first stock price update
+    StockSocket.addTicker(ticker, stockPriceChanged);
+});
+

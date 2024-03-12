@@ -12,7 +12,7 @@ class Entry {
     calculatedYearly;
     calculatedPeriod;
     stockTicker;
-    stock;
+    stockPrice;
 
     testForm() {
         // set initial values
@@ -22,7 +22,7 @@ class Entry {
         this.bonus = this.dataInputs[2].value.trim() ? parseFloat(this.dataInputs[2].value.trim()) : 0.00;
         this.period = document.getElementById('pay_period').value;
         this.stockTicker = document.getElementById('stock_tag').value;
-        this.stock = 0.00;
+        this.stockPrice = 0.00;
 
         for (let i = 0; i < this.dataInputs.length; i++) {
             let input = this.dataInputs[i];
@@ -45,8 +45,7 @@ class Entry {
         if (this.testForm()) {
             // calculate stock grants
             if(this.stockTicker) {
-                console.log("Haven't added this funcitonality yet");
-                // this.calculateStock();
+                this.calculateStock();
             }
             // calculate yearly takehome
             let yearlySalary = this.salary + this.bonus;
@@ -94,14 +93,27 @@ class Entry {
     
     }
 
-    calculateStock() {
-        // try {
-        //     StockSocket.addTicker(this.stockTicker, this.stockPriceChanged); // sets up live updates
-        //     StockSocket.removeAllTickers(); // remove live funcitonality after one update
-        // } catch (error) {
-        //     console.error("Error in calculateStock: ", error);
-        //     alert("Please enter a valid ticker symbol or leave entry field blank")
-        // }
+    async getStockPrice() {
+        try {
+            const response = await fetch('/api/getStockPrice', {
+                method: 'POST',
+                headers: {'content-type': 'application/json'},
+                body: JSON.stringify({ ticker: this.stockTicker }),
+            });
+            
+            if(!response.ok) {
+                alert("Please enter a valid ticker symbol or leave entry field blank");
+                throw new Error('failed to get stock price');
+            }
+
+            const data = await response.json();
+            // saves the current stock price
+            this.stockPrice = data.price;
+
+        } catch (error) {
+            console.log("error in calculate stock: ", error);
+            alert("Please enter a valid ticker symbol or leave entry field blank");
+        }
 
     }
 
@@ -110,7 +122,8 @@ class Entry {
             name: this.name,
             yearly: "$" + this.calculatedYearly,
             period: "$" + this.calculatedPeriod + this.period,
-            stock: "$" + this.stock
+            stockTicker: this.stockTicker,
+            stockPrice: "$" + this.stockPrice
         }
 
         try {
@@ -138,20 +151,6 @@ class Entry {
         localStorage.setItem('previousEntries', JSON.stringify(previousEntries));
         window.location.href = "compare.html";
     }
-
-// This is a third-party function from "StockSocket"
-//     stockPriceChanged(data) {
-//         //Choose what to do with your data as it comes in.
-//         // update price per share
-//         const priceEl = document.getElementById('stock_price');
-//         this.stock = data.price.toFixed(2);
-//         console.log(this.stock);
-//         priceEl.textContent = "$" + this.stock;
-//         // update total stock display
-//         const stockDisplayEl = document.getElementById('stockDisplay');
-//         const stockAmtEl = document.getElementById("stock_amt").value;
-//         stockDisplayEl.textContent = this.stock * stockAmtEl;
-//       }
 }
 
 function resetStyle() {
