@@ -50,16 +50,18 @@ function updateEntries(newEntry, entries) {
 
 // Stock Socket Functionality
 // Get the stock price for calculation
-app.post('/getStockPrice', (req, res) => {
+apiRouter.post('/getStockPrice', (req, res) => {
     const { ticker } = req.body;
-  
+
+    console.log(ticker);
+
     let isFirstUpdate = true;
 
     function stockPriceChanged(data) {
-        const stockPrice = data.price;
+        console.log(data);
 
         // Send the stock price to the client
-        res.send({ price: stockPrice });
+        res.send({ price: data.price });
 
         // Remove the ticker after the first update
         if (isFirstUpdate) {
