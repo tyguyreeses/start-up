@@ -131,7 +131,7 @@ class Entry {
             yearly: "$" + this.calculatedYearly,
             period: "$" + this.calculatedPeriod + this.period,
             stockTicker: this.stockTicker,
-            stockPrice: "$" + this.stockPrice * this.stockAmt
+            stockPrice: "$" + (this.stockPrice * this.stockAmt).toFixed(2)
         }
 
         try {
