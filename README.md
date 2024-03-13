@@ -103,3 +103,15 @@ I'm working on building the basics of a job comparison website. While job search
         - Taking into account provided insurance and retirement benefits 
         - Potentially adding "expenses" information tied to the specific user to deduct monthly and yearly payments from all calculated yearly and monthly salaries. (long ways down the road)
         - Who knows? This might turn into a financial planner/budgeting website on top of a job offer comparison application.
+
+## Web Service Deliverable
+- **HTTP Service with Node and Express**
+    - Node and Express are both utilized in my front- and back-end code
+- **Frontend served up using Express static middleware**
+    - Frontend is served up using Express
+- **Your frontend calls third party service endpoints**
+    - As part of a backend operation, my frontend file jobEntry.js calls Yahoo Finance's free stock information access system to get the price of a stock given a user-provided ticker symbol
+- **Your backend provides service endpoints**
+    - Endpoints are provided in index.js
+- **Your frontend calls your service endpoints**
+    - Calls are made in jobEntry.js and compare.js
