@@ -43,7 +43,7 @@ async function loadEntries() {
         nameTdEl.textContent = entry.name;
         yearlyTdEl.textContent = entry.yearly;
         periodTdEl.textContent = entry.period;
-        stockTdEl.textContent = entry.stock;
+        stockTdEl.textContent = entry.stockPrice;
         // create the row element and append the td elements to it
         const rowEl = document.createElement('tr');
         rowEl.appendChild(nameTdEl);
