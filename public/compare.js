@@ -54,7 +54,7 @@ async function loadEntries() {
         tableBodyEl.appendChild(rowEl);
       }
     } else {
-      tableBodyEl.innerHTML = '<tr><td colSpan=3>No entries saved</td></tr>';
+      tableBodyEl.innerHTML = '<tr><td colSpan=4>No entries saved</td></tr>';
     }
   }
   
