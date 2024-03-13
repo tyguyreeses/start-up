@@ -61,7 +61,7 @@ apiRouter.post('/getStockPrice', (req, res) => {
   .catch(err => console.error(err));
 });
 
-
+// gets stock price from Yahoo Finance's free stock information access system
 async function fetchStockPrice(ticker) {
   const apiUrl = `https://query1.finance.yahoo.com/v8/finance/chart/${ticker}`;
 
