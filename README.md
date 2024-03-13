@@ -15,7 +15,7 @@ I'm working on building the basics of a job comparison website. While job search
 
 ### Design
 
-![Image of my sketch of a data entry screen and for a comparison screen](/startup-design.jpg)
+![Image of my sketch of a data entry screen and for a comparison screen](/public/assets/startup-design.jpg)
 
 ### Key Features
 
