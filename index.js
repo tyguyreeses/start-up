@@ -53,12 +53,12 @@ function updateEntries(newEntry, entries) {
 apiRouter.post('/getStockPrice', (req, res) => {
     const { ticker } = req.body;
 
-    console.log(ticker);
+    console.log("ticker in backend code: ", ticker);
 
     let isFirstUpdate = true;
 
     function stockPriceChanged(data) {
-        console.log(data);
+        console.log("data in stockPriceChanged: ", data);
 
         // Send the stock price to the client
         res.send({ price: data.price });

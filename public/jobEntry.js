@@ -106,7 +106,7 @@ class Entry {
                 throw new Error('failed to get stock price');
             }
 
-            console.log(this.stockTicker);
+            console.log("stockTicker in frontend code: ",this.stockTicker);
 
             const data = await response.json();
             // saves the current stock price
