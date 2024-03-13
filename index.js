@@ -1,6 +1,6 @@
 const express = require('express');
+// const fetch = require('node-fetch');
 const app = express();
-const StockSocket = require('stocksocket');
 
 // The service port. In production the front-end code is statically hosted by the service on the same port.
 const port = process.argv.length > 2 ? process.argv[2] : 4000;
@@ -47,30 +47,44 @@ function updateEntries(newEntry, entries) {
       return entries;
 }
 
-
-// Stock Socket Functionality
 // Get the stock price for calculation
 apiRouter.post('/getStockPrice', (req, res) => {
-    const { ticker } = req.body;
+  const { ticker } = req.body;
+  fetchStockPrice(ticker)
+  .then(price => {
+    if (price !== null) {
+    console.log(`Current price of ${ticker}: ${price}`);
+    res.send({ ticker: price })
+    } else {
+    console.log('Failed to fetch stock price.');
+    }
+  })
+  .catch(err => console.error(err));
+});
 
-    console.log("ticker in backend code: ", ticker);
 
-    let isFirstUpdate = true;
+async function fetchStockPrice(ticker) {
+  const apiUrl = `https://query1.finance.yahoo.com/v8/finance/chart/${ticker}`;
 
-    function stockPriceChanged(data) {
-        console.log("data in stockPriceChanged: ", data);
+  try {
+    const response = await fetch(apiUrl);
+    const data = await response.json();
 
-        // Send the stock price to the client
-        res.send({ price: data.price });
-
-        // Remove the ticker after the first update
-        if (isFirstUpdate) {
-            StockSocket.removeTicker(ticker);
-            isFirstUpdate = false;
-        }
+    // Check if the API returned an error
+    if (data.chart.error) {
+      throw new Error(data.chart.error.description);
     }
 
-    // Add the ticker with the callback for the first stock price update
-    StockSocket.addTicker(ticker, stockPriceChanged);
-});
+    // Extracting the current price from the response
+    const currentPrice = data.chart.result[0].meta.regularMarketPrice;
+    return currentPrice;
+  } catch (error) {
+    console.error('Error fetching stock price:', error.message);
+    return null;
+  }
+}
+
+
+
+
 

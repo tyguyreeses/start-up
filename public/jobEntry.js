@@ -12,6 +12,7 @@ class Entry {
     calculatedYearly;
     calculatedPeriod;
     stockTicker;
+    stockAmt;
     stockPrice;
 
     testForm() {
@@ -22,6 +23,7 @@ class Entry {
         this.bonus = this.dataInputs[2].value.trim() ? parseFloat(this.dataInputs[2].value.trim()) : 0.00;
         this.period = document.getElementById('pay_period').value;
         this.stockTicker = document.getElementById('stock_tag').value;
+        this.stockAmt = parseInt(document.getElementById("stock_amt").value.trim());
         this.stockPrice = 0.00;
 
         for (let i = 0; i < this.dataInputs.length; i++) {
@@ -31,11 +33,9 @@ class Entry {
                 alert('Please fill in all fields.');
                 return false;
             }
-            if (i > 0) {
-                if (isNaN(inputValue)) {
-                    alert("Please enter a valid input.\nDon't include '$' or commas.")
-                    return false;
-                }
+            if (i > 0 && isNaN(inputValue)) {
+                alert("Please enter a valid input.\nDon't include '$' or commas.")
+                return false;
             }
         }
         return true;
@@ -110,7 +110,13 @@ class Entry {
 
             const data = await response.json();
             // saves the current stock price
-            this.stockPrice = data.price;
+            this.stockPrice = data.ticker;
+            console.log(this.stockPrice);
+
+            const stockDisplayEl = document.getElementById('stockDisplay');
+            const stockPriceEl = document.getElementById('stock_price');
+            stockPriceEl.textContent = "$" + this.stockPrice;
+            stockDisplayEl.textContent = (this.stockPrice * this.stockAmt).toFixed(2);
 
         } catch (error) {
             console.log("error in calculate stock: ", error);
