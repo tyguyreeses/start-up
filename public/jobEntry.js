@@ -1,9 +1,7 @@
-// Stock Price Websocket
-// const StockSocket = require("stocksocket");
-
 // Calulate Functionality
 
 class Entry {
+    username;
     dataInputs;
     name;
     salary;
@@ -25,6 +23,7 @@ class Entry {
         this.stockTicker = document.getElementById('stock_tag').value;
         this.stockAmt = parseInt(document.getElementById("stock_amt").value.trim());
         this.stockPrice = 0.00;
+        this.username = localStorage.getItem("username");
 
         for (let i = 0; i < this.dataInputs.length; i++) {
             let input = this.dataInputs[i];
@@ -127,6 +126,7 @@ class Entry {
 
     async saveEntry() {
         const newEntry = {
+            user: this.username,
             name: this.name,
             yearly: "$" + this.calculatedYearly,
             period: "$" + this.calculatedPeriod + this.period,
