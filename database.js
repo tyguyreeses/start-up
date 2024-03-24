@@ -42,18 +42,26 @@ async function createUser(email, password) {
   return user;
 }
 
-function addEntry(email, entry) {
-  const user = getUser(email);
-  user.entries[entry.name] = entry;
-  userCollection.updateOne(userQuery, { $set: { entries: user.entries } });
+async function addEntry(user, entry) {
+  try {
+    console.log("user in addEntry: ", user);
+    const filter = { email: user.email };
+    const update = { $set: { [`entries.${entry.name}`]: entry } };
+    await userCollection.updateOne(filter, update);
+    console.log("Entry added successfully");
+} catch (error) {
+    console.error("Error adding entry:", error);
+    throw error;
+}
 }
 
-function getEntries(email) {
-  const user = getUser(email);
+async function getEntries(user) {
   if (!user || !user.entries) {
+    console.log("user or user.entries doesn't exist")
     return [];
   }
   const entriesArray = Object.values(user.entries);
+  console.log("entriesArray: ", entriesArray);
   return entriesArray;
 }
 
