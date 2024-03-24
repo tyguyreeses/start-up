@@ -42,8 +42,10 @@ async function createUser(email, password) {
   return user;
 }
 
-function addEntry(entry) {
-  entryCollection.insertOne(entry);
+function addEntry(email, entry) {
+  const user = getUser(email);
+  user.entries[entry.name] = entry;
+  userCollection.updateOne(userQuery, { $set: { entries: user.entries } });
 }
 
 function getEntries(email) {
@@ -51,8 +53,8 @@ function getEntries(email) {
   if (!user || !user.entries) {
     return [];
   }
-  const entries = Object.values(user.entries);
-  return entryValues;
+  const entriesArray = Object.values(user.entries);
+  return entriesArray;
 }
 
 module.exports = {
