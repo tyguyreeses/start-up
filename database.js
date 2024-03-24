@@ -46,14 +46,13 @@ function addEntry(entry) {
   entryCollection.insertOne(entry);
 }
 
-async function getEntries(email) {
-  const user = await DB.getUser(email);
-  const options = {
-    sort: { entry: -1 },
-    limit: 10,
-  };
-  const cursor = entryCollection.find(query, options);
-  return cursor.toArray();
+function getEntries(email) {
+  const user = getUser(email);
+  if (!user || !user.entries) {
+    return [];
+  }
+  const entries = Object.values(user.entries);
+  return entryValues;
 }
 
 module.exports = {
