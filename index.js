@@ -87,7 +87,7 @@ secureApiRouter.use(async (req, res, next) => {
 
 // GetEntries
 secureApiRouter.get('/entries', async (req, res) => {
-  const user = await DB.getUser(req.params.email);
+  const user = await DB.getUser("Tyler"); //req.params.email
   console.log("User found: ", user);
   if (user) {
     const entries = await DB.getEntries(user);
@@ -102,7 +102,7 @@ secureApiRouter.get('/entries', async (req, res) => {
 secureApiRouter.post('/entry', async (req, res) => {
   const entry = { ...req.body, ip: req.ip };
   console.log("Entry to add: ", entry)
-  const user = await DB.getUser(req.params.email); // User isn't being found by the system
+  const user = await DB.getUser("Tyler"); // User isn't being found by the system req.params.email
   console.log("User found: ", user);
   if (user) {
     await DB.addEntry(user, entry);
