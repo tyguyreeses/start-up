@@ -122,17 +122,16 @@ app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
 
-// updateScores considers a new score for inclusion in the high scores.
-// The high scores are saved in memory and disappear whenever the service is restarted.
-let entries = [];
-function updateEntries(newEntry, entries) {
-    if (!entries.includes(newEntry)) {
-        entries.push(newEntry); // Add the new entry only if it doesn't exist
-    } else {
-        console.log("Entry already exists. Not adding duplicate.");
-    }
-      return entries;
-}
+
+// let entries = [];
+// function updateEntries(newEntry, entries) {
+//     if (!entries.includes(newEntry)) {
+//         entries.push(newEntry); // Add the new entry only if it doesn't exist
+//     } else {
+//         console.log("Entry already exists. Not adding duplicate.");
+//     }
+//       return entries;
+// }
 
 // Get the stock price for calculation
 apiRouter.post('/getStockPrice', (req, res) => {
