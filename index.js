@@ -87,16 +87,26 @@ secureApiRouter.use(async (req, res, next) => {
 
 // GetEntries
 secureApiRouter.get('/entries', async (req, res) => {
-  const entries = await DB.getEntries();
-  res.send(entries);
+  const user = await DB.getUser(req.params.email);
+  if (user) {
+    const entries = await DB.getEntries(user);
+    res.send(entries);
+  } else {
+    console.log("couldn't find user in index.js GetEntries")
+  }
 });
 
 // SubmitEntry
 secureApiRouter.post('/entry', async (req, res) => {
   const entry = { ...req.body, ip: req.ip };
-  await DB.addEntry(entry);
-  const entries = await DB.getEntries();
-  res.send(entries);
+  const user = await DB.getUser(req.params.email);
+  if (user) {
+    await DB.addEntry(entry);
+    const entries = await DB.getEntries();
+    res.send(entries);
+  } else {
+    console.log("couldn't find user in index.js SubmitEntry")
+  }
 });
 
 // Return the application's default page if the path is unknown
