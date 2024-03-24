@@ -46,7 +46,7 @@ function displayUsername() {
 }
 
 function logout() {
-    localStorage.removeItem('username');
+    localStorage.clear();
     fetch(`/api/auth/logout`, { method: 'delete' }).then(() => (window.location.href = '/'));
 }
 
