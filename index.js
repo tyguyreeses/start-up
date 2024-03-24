@@ -94,7 +94,7 @@ secureApiRouter.get('/entries', async (req, res) => {
     console.log("Entries found: ", entries)
     res.send(entries);
   } else {
-    console.log("couldn't find user in index.js GetEntries")
+    console.log("couldn't find user: '", user, "' in index.js GetEntries")
   }
 });
 
@@ -105,11 +105,11 @@ secureApiRouter.post('/entry', async (req, res) => {
   const user = await DB.getUser(req.params.email); // User isn't being found by the system
   console.log("User found: ", user);
   if (user) {
-    await DB.addEntry(entry);
-    const entries = await DB.getEntries();
+    await DB.addEntry(user, entry);
+    const entries = await DB.getEntries(user);
     res.send(entries);
   } else {
-    console.log("couldn't find user: ", user, " in index.js SubmitEntry")
+    console.log("couldn't find user: '", user, "' in index.js SubmitEntry")
   }
 });
 
