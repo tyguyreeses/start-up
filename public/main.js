@@ -11,24 +11,6 @@ function menuDisplay() {
     }
 }
 
-// function login() {
-//     let username = document.getElementById("name").value;
-//     let password = document.getElementById("password").value;
-    
-
-//     if (username && password) {
-//         localStorage.setItem("username", username); // stores to local storage
-//         localStorage.setItem("password", password);
-//         if (!localStorage.getItem('previousEntries')) {
-//             window.location.href = "jobEntry.html";
-//         } else {
-//             window.location.href = "compare.html";
-//         }
-//     } else {
-//         alert("Please enter both username and password");
-//     }
-// }
-
 async function login() {
     loginOrCreate(`/api/auth/login`);
 }
