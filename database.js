@@ -35,6 +35,7 @@ async function createUser(email, password) {
     email: email,
     password: passwordHash,
     token: uuid.v4(),
+    entries: {},
   };
   await userCollection.insertOne(user);
 
@@ -45,8 +46,8 @@ function addEntry(entry) {
   entryCollection.insertOne(entry);
 }
 
-function getEntries() {
-  const query = { salary: { $exists: true } }; // finds all entries with a salary property
+async function getEntries(email) {
+  const user = await DB.getUser(email);
   const options = {
     sort: { entry: -1 },
     limit: 10,
