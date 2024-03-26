@@ -113,13 +113,15 @@ secureApiRouter.get('/entries', async (req, res) => {
 // });
 
 // SubmitEntry
-secureApiRouter.get('/entries', async (req, res) => {
+secureApiRouter.post('/entry', async (req, res) => {
   const userEmail = req.query.email; // Extract the email from the query parameters
+  const entry = { ...req.body, ip: req.ip };
+  console.log("Entry to add: ", entry);
   const user = await DB.getUser(userEmail); // Look up the user using the extracted email
   console.log("User found: ", user);
   if (user) {
+    await DB.addEntry(user, entry);
     const entries = await DB.getEntries(user);
-    console.log("Entries found: ", entries)
     res.send(entries);
   } else {
     console.log("Couldn't find user: ", userEmail);
