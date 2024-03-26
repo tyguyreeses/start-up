@@ -34,15 +34,14 @@
           </tr>
         </thead>
         <tbody id="job_entries">
-          <!-- filler table -->
-          <!-- <tr>
-            <td>Walmart</td>
-            <td>$45,000</td>
-            <td>$3,750</td>
-            <td><button class="remove_button" onclick=removeEntry()>Remove</button></td>
-          </tr> -->
         </tbody>
       </table>
+      <fieldset id="chat-controls" disabled>
+        <legend>Chat</legend>
+        <input id="new-msg" type="text" />
+        <button onclick="sendMessage()">Send</button>
+      </fieldset>
+      <div id="chat-text"></div>
     </main>
 
     <footer>

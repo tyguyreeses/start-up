@@ -235,3 +235,16 @@ footer {
 #github_link:hover {
   background-color: darkgrey;
 }
+
+
+/* chat css */
+div .friend {
+  color: rgb(153, 87, 148);
+  margin-left: 0.5em;
+}
+div .me {
+  color: rgb(87, 153, 117);
+}
+div .system {
+  color: rgb(225, 103, 10);
+}
