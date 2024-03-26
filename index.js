@@ -87,31 +87,59 @@ secureApiRouter.use(async (req, res, next) => {
 
 // GetEntries
 secureApiRouter.get('/entries', async (req, res) => {
-  const user = await DB.getUser("Tyler"); // User isn't being found by the system so I hardcoded it, 
-  console.log("User found: ", user);      // "req.params.email" is what I was using before
+  const userEmail = req.query.email; // Extract the email from the query parameters
+  const user = await DB.getUser(userEmail); // Look up the user using the extracted email
+  console.log("User found: ", user);
   if (user) {
     const entries = await DB.getEntries(user);
     console.log("Entries found: ", entries)
     res.send(entries);
   } else {
-    console.log("couldn't find user: '", user, "' in index.js GetEntries")
+    console.log("Couldn't find user: ", userEmail);
+    res.status(404).send({ msg: 'User not found' });
   }
 });
 
+// secureApiRouter.get('/entries', async (req, res) => {
+//   const user = await DB.getUser("Tyler"); // User isn't being found by the system so I hardcoded it, 
+//   console.log("User found: ", user);      // "req.params.email" is what I was using before
+//   if (user) {
+//     const entries = await DB.getEntries(user);
+//     console.log("Entries found: ", entries)
+//     res.send(entries);
+//   } else {
+//     console.log("couldn't find user: '", user, "' in index.js GetEntries")
+//   }
+// });
+
 // SubmitEntry
-secureApiRouter.post('/entry', async (req, res) => {
-  const entry = { ...req.body, ip: req.ip };
-  console.log("Entry to add: ", entry)
-  const user = await DB.getUser("Tyler"); // User isn't being found by the system so I hardcoded it,
-  console.log("User found: ", user);      // "req.params.email" is what I was using before
+secureApiRouter.get('/entries', async (req, res) => {
+  const userEmail = req.query.email; // Extract the email from the query parameters
+  const user = await DB.getUser(userEmail); // Look up the user using the extracted email
+  console.log("User found: ", user);
   if (user) {
-    await DB.addEntry(user, entry);
     const entries = await DB.getEntries(user);
+    console.log("Entries found: ", entries)
     res.send(entries);
   } else {
-    console.log("couldn't find user: '", user, "' in index.js SubmitEntry")
+    console.log("Couldn't find user: ", userEmail);
+    res.status(404).send({ msg: 'User not found' });
   }
 });
+
+// secureApiRouter.post('/entry', async (req, res) => {
+//   const entry = { ...req.body, ip: req.ip };
+//   console.log("Entry to add: ", entry)
+//   const user = await DB.getUser("Tyler"); // User isn't being found by the system so I hardcoded it,
+//   console.log("User found: ", user);      // "req.params.email" is what I was using before
+//   if (user) {
+//     await DB.addEntry(user, entry);
+//     const entries = await DB.getEntries(user);
+//     res.send(entries);
+//   } else {
+//     console.log("couldn't find user: '", user, "' in index.js SubmitEntry")
+//   }
+// });
 
 // Return the application's default page if the path is unknown
 app.use((_req, res) => {
@@ -184,61 +212,62 @@ async function fetchStockPrice(ticker) {
   }
 }
 
-// chat functionality
-const { WebSocketServer } = require('ws');
-// Create a websocket object
-const wss = new WebSocketServer({ noServer: true });
+// // =================================== chat functionality =================================== //
+// const { WebSocketServer } = require('ws');
 
-// Handle the protocol upgrade from HTTP to WebSocket
-server.on('upgrade', (request, socket, head) => {
-  wss.handleUpgrade(request, socket, head, function done(ws) {
-    wss.emit('connection', ws, request);
-  });
-});
+// // Create a websocket object
+// const wss = new WebSocketServer({ noServer: true });
 
-// Keep track of all the connections so we can forward messages
-let connections = [];
-let id = 0;
+// // Handle the protocol upgrade from HTTP to WebSocket
+// server.on('upgrade', (request, socket, head) => {
+//   wss.handleUpgrade(request, socket, head, function done(ws) {
+//     wss.emit('connection', ws, request);
+//   });
+// });
 
-wss.on('connection', (ws) => {
-  const connection = { id: ++id, alive: true, ws: ws };
-  connections.push(connection);
+// // Keep track of all the connections so we can forward messages
+// let connections = [];
+// let id = 0;
 
-  // Forward messages to everyone except the sender
-  ws.on('message', function message(data) {
-    connections.forEach((c) => {
-      if (c.id !== connection.id) {
-        c.ws.send(data);
-      }
-    });
-  });
+// wss.on('connection', (ws) => {
+//   const connection = { id: ++id, alive: true, ws: ws };
+//   connections.push(connection);
 
-  // Remove the closed connection so we don't try to forward anymore
-  ws.on('close', () => {
-    const pos = connections.findIndex((o, i) => o.id === connection.id);
+//   // Forward messages to everyone except the sender
+//   ws.on('message', function message(data) {
+//     connections.forEach((c) => {
+//       if (c.id !== connection.id) {
+//         c.ws.send(data);
+//       }
+//     });
+//   });
 
-    if (pos >= 0) {
-      connections.splice(pos, 1);
-    }
-  });
+//   // Remove the closed connection so we don't try to forward anymore
+//   ws.on('close', () => {
+//     const pos = connections.findIndex((o, i) => o.id === connection.id);
 
-  // Respond to pong messages by marking the connection alive
-  ws.on('pong', () => {
-    connection.alive = true;
-  });
-});
+//     if (pos >= 0) {
+//       connections.splice(pos, 1);
+//     }
+//   });
 
-// Keep active connections alive
-setInterval(() => {
-  connections.forEach((c) => {
-    // Kill any connection that didn't respond to the ping last time
-    if (!c.alive) {
-      c.ws.terminate();
-    } else {
-      c.alive = false;
-      c.ws.ping();
-    }
-  });
-}, 10000);
+//   // Respond to pong messages by marking the connection alive
+//   ws.on('pong', () => {
+//     connection.alive = true;
+//   });
+// });
+
+// // Keep active connections alive
+// setInterval(() => {
+//   connections.forEach((c) => {
+//     // Kill any connection that didn't respond to the ping last time
+//     if (!c.alive) {
+//       c.ws.terminate();
+//     } else {
+//       c.alive = false;
+//       c.ws.ping();
+//     }
+//   });
+// }, 10000);
 
 
