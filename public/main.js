@@ -8,6 +8,9 @@ document.addEventListener("DOMContentLoaded", () => {
 function menuDisplay() {
     if (!localStorage.getItem("username")) {
         document.getElementById("menu").style.display = "none";
+        if (window.location.href != "") {
+            window.location.href != "";
+        }
     }
 }
 
@@ -45,7 +48,7 @@ function displayUsername() {
     displayElement.textContent = username;
 }
 
-function logout() {
+async function logout() {
     localStorage.clear();
     fetch(`/api/auth/logout`, { method: 'delete' }).then(() => (window.location.href = '/'));
 }
