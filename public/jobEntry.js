@@ -135,7 +135,7 @@ class Entry {
         }
 
         try {
-            const response = await fetch('/api/entry', {
+            const response = await fetch(`/api/entry?email=${encodeURIComponent(this.username)}`, {
               method: 'POST',
               headers: {'content-type': 'application/json'},
               body: JSON.stringify(newEntry),
