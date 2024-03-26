@@ -140,15 +140,29 @@ class Entry {
               headers: {'content-type': 'application/json'},
               body: JSON.stringify(newEntry),
             });
-      
-            // Store what the service gave us as the new entry
-            const entries = await response.json();
-            localStorage.setItem('entries', JSON.stringify(entries));
-            window.location.href = "compare.html";
-          } catch {
-            // If there was an error then just track scores locally
+        // Check if response is successful (status code 2xx)
+        if (response.ok) {
+            // Parse response only if content type is JSON
+            const contentType = response.headers.get('content-type');
+            if (contentType && contentType.includes('application/json')) {
+                const entries = await response.json();
+                localStorage.setItem('previousEntries', JSON.stringify(entries));
+                window.location.href = "compare.html";
+            } else {
+                // Handle non-JSON response (e.g., HTML error page)
+                console.error('Error saving entry: Response is not in JSON format');
+                this.updateEntriesLocal(newEntry);
+            }
+        } else {
+            // Handle unsuccessful response
+            console.error('Error saving entry: Server returned error status', response.status);
             this.updateEntriesLocal(newEntry);
-          }
+        }
+    } catch (error) {
+        // Handle fetch error
+        console.error('Error saving entry:', error);
+        this.updateEntriesLocal(newEntry);
+    }
     }
 
     updateEntriesLocal(newEntry) {
