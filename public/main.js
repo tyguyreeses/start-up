@@ -19,7 +19,13 @@ async function login() {
 }
   
 async function create() {
+  const username = document.querySelector('#name')?.value;
+  const password = document.querySelector('#password')?.value;
+  if (username && password) {
     loginOrCreate(`/api/auth/create`);
+  } else {
+    alert("Please enter a username and a password to create a new user.")
+  }
 }
 
 async function loginOrCreate(endpoint) {
