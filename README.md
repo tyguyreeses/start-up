@@ -105,6 +105,7 @@ I'm working on building the basics of a job comparison website. While job search
         - Who knows? This might turn into a financial planner/budgeting website on top of a job offer comparison application.
 
 ## Web Service Deliverable
+
 - **HTTP Service with Node and Express**
     - Node and Express are both utilized in my front- and back-end code
 - **Frontend served up using Express static middleware**
@@ -115,3 +116,19 @@ I'm working on building the basics of a job comparison website. While job search
     - Endpoints are provided in index.js
 - **Your frontend calls your service endpoints**
     - Calls are made in jobEntry.js and compare.js
+
+## Login Deliverable
+
+- **MongoDB Atlas database created** - Done!
+- **Stores data in MongoDB** - Done!
+- **User registration** - Done!
+- **Existing user** - Entries are stored under the existing user
+- **Use MongoDB to store credentials** - Stores the user information and their entries
+- **Restricts functionality** - Entering information and comparing that information only works for existing users
+
+## Websocket Deliverable
+
+- **Backend Listeners for Websocket connection** - Done!
+- **Frontend makes WebSocket connection** - Done!
+- **Data sent over WebSocket connection** - Done!
+- **WebSocket data displayed** - Messages sent between users are displayed in real time!
