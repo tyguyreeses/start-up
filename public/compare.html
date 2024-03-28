@@ -24,24 +24,26 @@
     
     <main>
       <h1>All Previous Offer Entries</h1>
-      <table>
-        <thead>
-          <tr>
-            <th class="entry_display_header" id="company_name_header" onclick="sortColumn(this)">Company Name/Job Title</th>
-            <th class="entry_display_header" id="yearly_takehome_header" onclick="sortColumn(this)">Yearly Takehome</th>
-            <th class="entry_display_header" id="paycheck_takehome_header" onclick="sortColumn(this)">Paycheck Takehome</th>
-            <th class="entry_display_header" id="stock_grants_header" onclick="sortColumn(this)">Stock Benefits</th>
-          </tr>
-        </thead>
-        <tbody id="job_entries">
-        </tbody>
-      </table>
-      <!-- <fieldset id="chat-controls" disabled>
-        <legend>Chat</legend>
-        <input id="new-msg" type="text" />
-        <button onclick="sendMessage()">Send</button>
-      </fieldset>
-      <div id="chat-text"></div> -->
+      <section id="entry_main">
+        <table>
+          <thead>
+            <tr>
+              <th class="entry_display_header" id="company_name_header" onclick="sortColumn(this)">Company Name/Job Title</th>
+              <th class="entry_display_header" id="yearly_takehome_header" onclick="sortColumn(this)">Yearly Takehome</th>
+              <th class="entry_display_header" id="paycheck_takehome_header" onclick="sortColumn(this)">Paycheck Takehome</th>
+              <th class="entry_display_header" id="stock_grants_header" onclick="sortColumn(this)">Stock Benefits</th>
+            </tr>
+          </thead>
+          <tbody id="job_entries">
+          </tbody>
+        </table>
+        <fieldset id="chat-controls" disabled>
+          <legend>Chat</legend>
+          <textarea id="new-msg" placeholder="Enter your message here"></textarea>
+          <button onclick="sendMessage()">Send</button>
+        </fieldset>
+        <div id="chat-text"></div>
+      </section>
     </main>
 
     <footer>
