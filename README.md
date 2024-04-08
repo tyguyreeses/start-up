@@ -128,7 +128,8 @@ I'm working on building the basics of a job comparison website. While job search
 
 ## Websocket Deliverable
 
+I wasn't sure how to make this mesh well with the overall functionality of my website, so I just added chat features to get the experience, even if I will most likely remove it later.
 - **Backend Listeners for Websocket connection** - Done!
 - **Frontend makes WebSocket connection** - Done!
 - **Data sent over WebSocket connection** - Done!
-- **WebSocket data displayed** - Messages sent between users are displayed in real time!
+- **WebSocket data displayed** - Messages sent between users are displayed in real time
