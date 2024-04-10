@@ -1,49 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>JobOfferInsight</title>
+    <meta charset="utf-8" />
     <link rel="icon" href="assets/JOI.png" />
-    <link rel="stylesheet" href="style.css" />
-    <script src="main.js" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>JobOfferInsight</title>
   </head>
   <body>
-    <header>
-      <aside id="username_display"></aside>
-      <h1>JobOfferInsight</h1>
-      <nav id="menu">
-         <!-- <div><a class="menu_control" href="index.html">Home</a></div> -->
-         <div><a class="menu_control" href="jobEntry.html">Job Entry</a></div>
-         <div><a class="menu_control" href="compare.html">Compare</a></div>
-         <div><a class="menu_control" href="about.html">About</a></div>
-         <div><a class="menu_control" onclick="logout()">Logout</a></div>
-      </nav>
-    </header>
-    
-    <main>
-      <aside class="JOI_logo"><img src="assets/JOI.png" alt="JOI Logo" width="150" height="150"></aside>
-      <h1>Welcome</h1>
-      <p>Login to save and compare your entries</p>
-      <form id="login_form">
-        <div class="login_div">
-          <label for="name">Username: </label>
-          <input class="login_box" type="text" id="name" name="name" placeholder="Username" />
-        </div>
-        <div class="login_div">
-          <label for="password">Password: </label>
-          <input class="login_box" type="password" id="password" name="password" placeholder="Password" />
-        </div>
-        <button type="button" id="login_user" onclick="login()">Login</button>
-        <button type="button" id="create_user" onclick="create()">Create</button>
-      </form>
-    </main>
-
-    <footer>
-      <span id="author">By Tyler Reese</span>
-      <div id="github">
-        <a id="github_link" href="https://github.com/tyguyreeses/start-up/blob/main/README.md">GitHub Repository Link</a>
-      </div>
-    </footer>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    <script type="module" src="/index.jsx"></script>
   </body>
 </html>
