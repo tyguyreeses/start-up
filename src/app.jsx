@@ -1,7 +1,7 @@
 import React from 'react';
 import './app.css';
 
-import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, NavLink, Route, Routes, useNavigate } from 'react-router-dom';
 import { Login } from './login/login.jsx';
 import { JobEntry } from './jobEntry/jobEntry.jsx';
 import { Compare } from './compare/compare.jsx';
@@ -15,10 +15,10 @@ export default function App() {
           <aside id="username_display"></aside>
           <h1>JobOfferInsight</h1>
           <nav id="menu">
-            <div><NavLink className="menu_control" to="jobEntry">Job Entry</NavLink></div>
-            <div><NavLink className="menu_control" to="compare">Compare</NavLink></div>
-            <div><NavLink className="menu_control" to="about">About</NavLink></div>
-            <div><NavLink className="menu_control" onclick="logout()">Logout</NavLink></div>
+            <div><NavLink className="menu_control" to="/jobEntry">Job Entry</NavLink></div>
+            <div><NavLink className="menu_control" to="/compare">Compare</NavLink></div>
+            <div><NavLink className="menu_control" to="/about">About</NavLink></div>
+            <div><NavLink className="menu_control" onClick={logout}>Logout</NavLink></div>
           </nav>
         </header>
         
@@ -33,7 +33,7 @@ export default function App() {
         <footer>
             <span id="author">By Tyler Reese</span>
             <div id="github">
-              <a id="github_link" href="https://github.com/tyguyreeses/start-up/blob/main/README.md">GitHub Repository Link</a>
+              <a id="github_link" href="https://github.com/tyguyreeses/start-up/blob/main/README.md" target="_blank" rel="noopener noreferrer">GitHub Repository Link</a>
             </div>
           </footer>
         </div>
@@ -43,4 +43,11 @@ export default function App() {
 
 function NotFound() {
   return <main>404: Return to sender. Address unknown.</main>;
+}
+
+async function logout() {
+  const navigate = useNavigate();
+  localStorage.clear();
+  await fetch(`/api/auth/logout`, { method: 'delete' });
+  navigate('/');
 }
