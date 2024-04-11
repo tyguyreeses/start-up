@@ -1,4 +1,7 @@
 {
+  "name": "startup",
+  "version": "0.1.0",
+  "private": true,
   "devDependencies": {
     "vite": "^5.2.8"
   },

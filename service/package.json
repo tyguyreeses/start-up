@@ -1,4 +1,11 @@
 {
+  "name": "startup-service",
+  "version": "1.0.0",
+  "description": "This demonstrates a service for a web application.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
   "dependencies": {
     "bcrypt": "^5.1.1",
     "cookie-parser": "^1.4.6",
