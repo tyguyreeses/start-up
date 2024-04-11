@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './app.css';
 
 import { BrowserRouter, NavLink, Route, Routes, useNavigate } from 'react-router-dom';
@@ -10,6 +10,22 @@ import { About } from './about/about.jsx';
 export default function App() {
   return (
     <BrowserRouter>
+      <AppContent />
+    </BrowserRouter>
+  );
+}
+function AppContent() {
+  const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('username'));
+  const navigate = useNavigate();
+
+  async function logout() {
+    localStorage.clear();
+    await fetch(`/api/auth/logout`, { method: 'delete' });
+    setIsLoggedIn(false);
+    navigate('/');
+  }
+
+  return (
       <div>
         <header>
           <aside id="username_display"></aside>
@@ -37,17 +53,9 @@ export default function App() {
             </div>
           </footer>
         </div>
-      </BrowserRouter>
   );
 }
 
 function NotFound() {
   return <main>404: Return to sender. Address unknown.</main>;
-}
-
-async function logout() {
-  const navigate = useNavigate();
-  localStorage.clear();
-  await fetch(`/api/auth/logout`, { method: 'delete' });
-  navigate('/');
 }
