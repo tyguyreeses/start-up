@@ -18,7 +18,7 @@ export function Login() {
     }
   }
 
-  const loginOrCreate = async () => {
+  const loginOrCreate = async (endpoint) => {
     const response = await fetch(endpoint, {
       method: 'post',
       body: JSON.stringify({ email: username, password: password }),
@@ -41,16 +41,16 @@ export function Login() {
         <h1>Welcome</h1>
         <p>Login to save and compare your entries</p>
         <form id="login_form">
-          <div>
+          <div className="login_div">
             <label htmlFor="name">Username: </label>
             <input className="login_box" type="text" placeholder="Username" value={username} onChange={(i) => setUsername(i.target.value)}/>
           </div>
-          <div>
+          <div className="login_div">
             <label htmlFor="password">Password: </label>
-            <input type="password" placeholder="Password" value={password} onChange={(i) => setPassword(i.target.value)}/>
+            <input className="login_box" type="password" placeholder="Password" value={password} onChange={(i) => setPassword(i.target.value)}/>
           </div>
-          <button onClick={login}>Login</button>
-          <button onClick={create}>Create</button>
+          <button type="button" id="login_user" onClick={login}>Login</button>
+          <button type="button" id="create_user" onClick={create}>Create</button>
         </form>
       </main>
     );
