@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-export function Login() {
+export function Login({ handleLogin }) {
   const [username, setUsername] = React.useState('');
   const [password, setPassword] = React.useState('');
   const navigate = useNavigate();
@@ -29,6 +29,7 @@ export function Login() {
   
     if (response.ok) {
       localStorage.setItem('username', username);
+      handleLogin();
       navigate('/jobEntry');
     } else {
       const body = await response.json();
