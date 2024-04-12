@@ -3,7 +3,7 @@ import './app.css';
 
 import { BrowserRouter, NavLink, Route, Routes, useNavigate } from 'react-router-dom';
 import { Login } from './login/login.jsx';
-import { JobEntry } from './jobEntry/jobEntry.jsx';
+import Entry from './jobEntry/jobEntry.jsx';
 import { Compare } from './compare/compare.jsx';
 import { About } from './about/about.jsx';
 
@@ -25,22 +25,29 @@ function AppContent() {
     navigate('/');
   }
 
+  const handleLogin = () => {
+    setIsLoggedIn(true);
+    console.log("isLoggedIn is: ", isLoggedIn);
+  }
+
   return (
       <div>
         <header>
           <aside id="username_display"></aside>
           <h1>JobOfferInsight</h1>
-          <nav id="menu">
+          {isLoggedIn ? (
+            <nav id="menu">
             <div><NavLink className="menu_control" to="/jobEntry">Job Entry</NavLink></div>
             <div><NavLink className="menu_control" to="/compare">Compare</NavLink></div>
             <div><NavLink className="menu_control" to="/about">About</NavLink></div>
             <div><NavLink className="menu_control" onClick={logout}>Logout</NavLink></div>
           </nav>
+          ) : null}
         </header>
         
         <Routes>
-          <Route path='/' element={<Login />} exact />
-          <Route path='/jobEntry' element={<JobEntry />} />
+          <Route path='/' element={<Login handleLogin={handleLogin}/>} exact />
+          <Route path='/jobEntry' element={<Entry />} />
           <Route path='/compare' element={<Compare />} />
           <Route path='/about' element={<About />} />
           <Route path='*' element={<NotFound />} />
