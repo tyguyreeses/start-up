@@ -128,9 +128,6 @@ input:hover {
   padding: 5pt;
   max-width: 100pt;
 }
-#submit {
-  display: none;
-}
 #salaryCalculation {
   display: flex;
   justify-content: flex-start;
@@ -138,7 +135,6 @@ input:hover {
   margin-top: 15pt;
 }
 .salaryInfo {
-  display: none;
   padding: 5pt;
   background-color: white;
   color: black;
