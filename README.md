@@ -133,3 +133,10 @@ I wasn't sure how to make this mesh well with the overall functionality of my we
 - **Frontend makes WebSocket connection** - Done!
 - **Data sent over WebSocket connection** - Done!
 - **WebSocket data displayed** - Messages sent between users are displayed in real time
+
+## React Deliverable
+
+- **Bundled Using Vite** - Done!
+- **Multiple Functional React Components** - Login, Job Entry, and Entry Display are all react components
+- **React Router** - Routing between login, entry, compare, and about screens
+- **React Hooks** - I used useNavigate and useState hooks throughout my application
