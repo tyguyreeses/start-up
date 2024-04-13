@@ -15,7 +15,8 @@ export default function App() {
   );
 }
 function AppContent() {
-  const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('username'));
+  const username = localStorage.getItem('username');
+  const [isLoggedIn, setIsLoggedIn] = useState(!!username);
   const navigate = useNavigate();
 
   async function logout() {
@@ -33,7 +34,7 @@ function AppContent() {
   return (
       <div>
         <header>
-          <aside id="username_display"></aside>
+          {isLoggedIn ? (<aside id="username_display">{username}</aside>) : null}
           <h1>JobOfferInsight</h1>
           {isLoggedIn ? (
             <nav id="menu">
