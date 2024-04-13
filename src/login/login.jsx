@@ -44,11 +44,11 @@ export function Login({ handleLogin }) {
         <form id="login_form">
           <div className="login_div">
             <label htmlFor="name">Username: </label>
-            <input className="login_box" type="text" placeholder="Username" value={username} onChange={(i) => setUsername(i.target.value)}/>
+            <input className="login_box" id="name" type="text" placeholder="Username" value={username} onChange={(i) => setUsername(i.target.value)}/>
           </div>
           <div className="login_div">
             <label htmlFor="password">Password: </label>
-            <input className="login_box" type="password" placeholder="Password" value={password} onChange={(i) => setPassword(i.target.value)}/>
+            <input className="login_box" type="password" id="password" placeholder="Password" value={password} onChange={(i) => setPassword(i.target.value)}/>
           </div>
           <button type="button" id="login_user" onClick={login}>Login</button>
           <button type="button" id="create_user" onClick={create}>Create</button>
