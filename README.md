@@ -1,4 +1,4 @@
-# start-up
+# Job Offer Comparison Interface
 ## BYU CS 260 Startup Project
 
 ### Notes File:
